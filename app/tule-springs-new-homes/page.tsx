@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
 
 export const metadata = {
-  title: 'Tule Springs New Homes | New Construction North Las Vegas',
+  title: { absolute: 'Tule Springs New Homes | North Las Vegas' },
   description: 'New homes and new construction in Tule Springs, North Las Vegas. Find brand-new listings with Dr. Jan Duffy.',
   openGraph: { url: 'https://www.homesintulesprings.com/tule-springs-new-homes' },
 };

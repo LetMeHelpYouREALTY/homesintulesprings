@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
 
 export const metadata = {
-  title: 'Contact Dr. Jan Duffy | Tule Springs Real Estate | (702) 500-1942',
+  title: { absolute: 'Contact Dr. Jan Duffy | Tule Springs | (702) 500-1942' },
   description: 'Contact Dr. Jan Duffy for Tule Springs real estate. Call (702) 500-1942 or email DrDuffy@bhhsnv.com. Berkshire Hathaway HomeServices Nevada Properties.',
   openGraph: { url: 'https://www.homesintulesprings.com/contact' },
 };

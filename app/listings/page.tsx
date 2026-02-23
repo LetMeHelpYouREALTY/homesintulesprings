@@ -3,7 +3,7 @@ import { PageBanner } from '@/components/PageBanner';
 
 export const metadata = {
   title: 'Listings | Tule Springs Homes for Sale',
-  description: 'Search Tule Springs and North Las Vegas homes for sale. Live MLS listings. Find your next home with Dr. Jan Duffy.',
+  description: 'Search Tule Springs and North Las Vegas homes for sale. Browse live MLS listings updated daily. Find your next home with Dr. Jan Duffy, Berkshire Hathaway HomeServices.',
   openGraph: { url: 'https://www.homesintulesprings.com/listings' },
 };
 

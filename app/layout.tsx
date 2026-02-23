@@ -11,7 +11,7 @@ const SITE_URL = 'https://www.homesintulesprings.com';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Homes in Tule Springs | Dr. Jan Duffy, REALTOR® | Berkshire Hathaway HomeServices',
+    default: 'Homes in Tule Springs | Dr. Jan Duffy, REALTOR®',
     template: '%s | Homes in Tule Springs',
   },
   description: 'Search homes for sale in Tule Springs, North Las Vegas. Browse real-time MLS listings, get home valuations, and connect with Dr. Jan Duffy, your local real estate expert.',

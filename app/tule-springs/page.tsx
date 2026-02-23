@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
 
 export const metadata = {
-  title: 'Tule Springs | North Las Vegas Real Estate & Community',
+  title: { absolute: 'Tule Springs | North Las Vegas Real Estate & Community' },
   description: 'Explore Tule Springs, North Las Vegas. Villages, schools, amenities, and homes for sale. Your guide with Dr. Jan Duffy.',
   openGraph: { url: 'https://www.homesintulesprings.com/tule-springs' },
 };

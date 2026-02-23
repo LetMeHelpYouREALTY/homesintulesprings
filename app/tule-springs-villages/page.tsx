@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
 
 export const metadata = {
-  title: 'Tule Springs Villages | North Las Vegas Neighborhoods',
-  description: 'Explore Tule Springs villages and neighborhoods. Find homes with Dr. Jan Duffy.',
+  title: { absolute: 'Tule Springs Villages | North Las Vegas' },
+  description: 'Explore the distinct villages and neighborhoods of Tule Springs, North Las Vegas. Find homes for sale in each village with guidance from Dr. Jan Duffy, REALTOR®.',
   openGraph: { url: 'https://www.homesintulesprings.com/tule-springs-villages' },
 };
 
