@@ -1984,6 +1984,18 @@ button.faq-question {
     color: rgba(255,255,255,0.7);
 }
 
+.open-houses-section {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.open-houses-map-frame {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #fff;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
