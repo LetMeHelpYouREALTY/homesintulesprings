@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { createPageMetadata } from '@/lib/seo';
+import { BUSINESS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: 'Listings | Tule Springs Homes for Sale',
-  description: 'Search Tule Springs and North Las Vegas homes for sale. Live MLS listings. Find your next home with Dr. Jan Duffy.',
-  openGraph: { url: 'https://www.homesintulesprings.com/listings' },
-};
+  description:
+    'Search homes for sale in Tule Springs and North Las Vegas with real-time MLS listings and local guidance from Dr. Jan Duffy.',
+  path: '/listings',
+});
 
 export default function ListingsPage() {
   return (
@@ -23,21 +27,14 @@ export default function ListingsPage() {
             <p>Browse real-time MLS listings. Updated in real time. Filter by price, beds, baths, and more.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.
+            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
           </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="NEWEST"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,OTHER"
-              price-min="300000"
-              price-max="900000"
-            />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
           <p className="mt-4">
-            Narrow your search: <Link href="/tule-springs-homes-for-sale">Tule Springs homes for sale</Link>, <Link href="/tule-springs-new-homes">new homes</Link>, <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, and <Link href="/tule-springs-amenities">amenities</Link>. Ready to buy? <Link href="/contact">Contact Dr. Jan Duffy</Link> at <a href="tel:+17025001942">(702) 500-1942</a>.
+            Narrow your search: <Link href="/tule-springs-homes-for-sale">Tule Springs homes for sale</Link>, <Link href="/tule-springs-new-homes">new homes</Link>, <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, and <Link href="/tule-springs-amenities">amenities</Link>. Ready to buy? <Link href="/contact">Contact Dr. Jan Duffy</Link> at <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phoneDisplay}</a>.
           </p>
         </div>
       </section>
@@ -47,7 +44,7 @@ export default function ListingsPage() {
             <h2>Find Your Tule Springs Home</h2>
             <p>Dr. Jan Duffy will help you find the right home in Tule Springs or North Las Vegas.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
             </div>
           </div>

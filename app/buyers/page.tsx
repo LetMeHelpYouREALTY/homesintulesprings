@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { createPageMetadata } from '@/lib/seo';
+import { BUSINESS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = {
-  title: 'Buy a Home in Tule Springs | First-Time Buyer Guide',
-  description: 'Looking to buy a home in Tule Springs, North Las Vegas? Search available homes, get pre-approved, and work with Dr. Jan Duffy to find your perfect property.',
-  openGraph: { url: 'https://www.homesintulesprings.com/buyers' },
-};
+export const metadata = createPageMetadata({
+  title: 'Buy a Home in Tule Springs | Buyer Services',
+  description:
+    'Browse homes for sale in Tule Springs and North Las Vegas with real-time MLS search and local guidance from Dr. Jan Duffy.',
+  path: '/buyers',
+});
 
 export default function BuyersPage() {
   return (
@@ -19,18 +23,11 @@ export default function BuyersPage() {
             <p>Browse real-time MLS listings in Tule Springs and surrounding areas</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.
+            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
           </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="NEWEST"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,OTHER"
-              price-min="300000"
-              price-max="900000"
-            />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
           <div className="benefits-row">
             <div className="benefit-item">
@@ -62,7 +59,7 @@ export default function BuyersPage() {
             <h2>Ready to Find Your Home?</h2>
             <p>Dr. Jan Duffy will guide you every step of the way.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
             </div>
           </div>

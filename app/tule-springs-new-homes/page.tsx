@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { createPageMetadata } from '@/lib/seo';
+import { BUSINESS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: 'Tule Springs New Homes | New Construction North Las Vegas',
-  description: 'New homes and new construction in Tule Springs, North Las Vegas. Find brand-new listings with Dr. Jan Duffy.',
-  openGraph: { url: 'https://www.homesintulesprings.com/tule-springs-new-homes' },
-};
+  description:
+    'Browse new construction and newly listed homes in Tule Springs, North Las Vegas with guidance from Dr. Jan Duffy.',
+  path: '/tule-springs-new-homes',
+});
 
 export default function TuleSpringsNewHomesPage() {
   return (
@@ -19,18 +23,11 @@ export default function TuleSpringsNewHomesPage() {
             <p>Browse new construction and recently listed homes.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.
+            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
           </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="NEWEST"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,OTHER"
-              price-min="300000"
-              price-max="900000"
-            />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
         </div>
       </section>
@@ -40,7 +37,7 @@ export default function TuleSpringsNewHomesPage() {
             <h2>Find Your New Home</h2>
             <p>Dr. Jan Duffy can guide you through new construction and resale.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
             </div>
           </div>

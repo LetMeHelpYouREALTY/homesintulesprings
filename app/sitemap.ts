@@ -1,27 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { NAV_ROUTES, SITE_URL } from '@/lib/site-contact';
 
 export const dynamic = 'force-static';
-
-const SITE_URL = 'https://www.homesintulesprings.com';
-
-const routes = [
-  '',
-  '/buyers',
-  '/sellers',
-  '/listings',
-  '/about',
-  '/contact',
-  '/tule-springs',
-  '/tule-springs-homes-for-sale',
-  '/tule-springs-villages',
-  '/tule-springs-schools',
-  '/tule-springs-amenities',
-  '/why-tule-springs',
-  '/tule-springs-real-estate',
-  '/tule-springs-neighborhoods',
-  '/north-las-vegas-tule-springs',
-  '/tule-springs-new-homes',
-];
 
 type ChangeFreq = 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 
@@ -32,10 +12,10 @@ function getChangeFrequency(path: string): ChangeFreq {
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  return routes.map((path) => ({
+  const contentUpdatedAt = new Date('2026-04-07T00:00:00.000Z');
+  return NAV_ROUTES.map((path) => ({
     url: path ? `${SITE_URL}${path}` : SITE_URL,
-    lastModified: now,
+    lastModified: contentUpdatedAt,
     changeFrequency: getChangeFrequency(path),
     priority: path === '' ? 1 : (path === '/listings' || path === '/buyers' || path === '/sellers' ? 0.9 : 0.8),
   }));

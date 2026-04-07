@@ -1,8 +1,7 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site-contact';
 
 export const dynamic = 'force-static';
-
-const SITE_URL = 'https://www.homesintulesprings.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,12 +9,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: ['/api/', '/_next/webpack-hmr'],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
-        disallow: ['/api/'],
+        disallow: ['/api/', '/_next/webpack-hmr'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

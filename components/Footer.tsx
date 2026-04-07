@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BUSINESS, SOCIAL_URLS } from '@/lib/site-contact';
 
 export function Footer() {
   return (
@@ -10,9 +11,9 @@ export function Footer() {
               <img src="/images/logo-white.svg" alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices" className="img-fluid" loading="lazy" />
             </div>
             <div className="footer-contact">
-              <p><i className="fas fa-map-marker-alt" aria-hidden="true"></i> 2627 Nature Park Dr, North Las Vegas, NV 89084</p>
-              <p><i className="fas fa-phone" aria-hidden="true"></i> <a href="tel:+17025001942">(702) 500-1942</a></p>
-              <p><i className="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:DrDuffy@bhhsnv.com">DrDuffy@bhhsnv.com</a></p>
+              <p><i className="fas fa-map-marker-alt" aria-hidden="true"></i> {BUSINESS.officeAddress.streetAddress}, {BUSINESS.officeAddress.city}, {BUSINESS.officeAddress.region} {BUSINESS.officeAddress.postalCode}</p>
+              <p><i className="fas fa-phone" aria-hidden="true"></i> <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phoneDisplay}</a></p>
+              <p><i className="fas fa-envelope" aria-hidden="true"></i> <a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></p>
             </div>
           </div>
           <div className="col-md-4">
@@ -41,10 +42,10 @@ export function Footer() {
             </ul>
             <h3 className="mt-3">Follow Dr. Duffy</h3>
             <div className="social-links">
-              <a href="https://www.facebook.com/DrJanDuffy" aria-label="Facebook"><i className="fab fa-facebook-f" aria-hidden="true"></i></a>
-              <a href="https://www.instagram.com/drjanduffy" aria-label="Instagram"><i className="fab fa-instagram" aria-hidden="true"></i></a>
-              <a href="https://www.linkedin.com/in/drjanduffy" aria-label="LinkedIn"><i className="fab fa-linkedin-in" aria-hidden="true"></i></a>
-              <a href="https://www.youtube.com/@drjanduffy" aria-label="YouTube"><i className="fab fa-youtube" aria-hidden="true"></i></a>
+              <a href={SOCIAL_URLS.facebook} aria-label="Facebook"><i className="fab fa-facebook-f" aria-hidden="true"></i></a>
+              <a href={SOCIAL_URLS.instagram} aria-label="Instagram"><i className="fab fa-instagram" aria-hidden="true"></i></a>
+              <a href={SOCIAL_URLS.linkedin} aria-label="LinkedIn"><i className="fab fa-linkedin-in" aria-hidden="true"></i></a>
+              <a href={SOCIAL_URLS.youtube} aria-label="YouTube"><i className="fab fa-youtube" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -55,7 +56,7 @@ export function Footer() {
             </div>
             <div className="col-md-6">
               <div className="footer-legal">
-                <p>Dr. Jan Duffy | License S.0197614.LLC | Berkshire Hathaway HomeServices Nevada Properties</p>
+                <p>Dr. Jan Duffy | License {BUSINESS.license} | {BUSINESS.legalName}</p>
                 <div className="realtor-logos">
                   <span className="equal-housing"><img src="/images/equal-housing.svg" alt="Equal Housing Opportunity" loading="lazy" /></span>
                   <span className="realtor-logo"><img src="/images/realtor-logo.svg" alt="Realtor" loading="lazy" /></span>

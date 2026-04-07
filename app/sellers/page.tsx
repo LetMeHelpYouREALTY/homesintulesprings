@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { createPageMetadata } from '@/lib/seo';
+import { BUSINESS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = {
-  title: 'Sell Your Home in Tule Springs | Free Home Valuation',
-  description: 'Sell your Tule Springs home for top dollar. Get a free home valuation, professional marketing, and expert negotiation from Dr. Jan Duffy, REALTOR®.',
-  openGraph: { url: 'https://www.homesintulesprings.com/sellers' },
-};
+export const metadata = createPageMetadata({
+  title: 'Sell Your Home in Tule Springs | Home Valuation',
+  description:
+    'Request a home valuation and seller strategy for Tule Springs and North Las Vegas with Dr. Jan Duffy.',
+  path: '/sellers',
+});
 
 export default function SellersPage() {
   return (
@@ -19,18 +23,11 @@ export default function SellersPage() {
             <p>Live MLS listings updated in real time.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.
+            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
           </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="NEWEST"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,OTHER"
-              price-min="300000"
-              price-max="900000"
-            />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
         </div>
       </section>
@@ -43,7 +40,7 @@ export default function SellersPage() {
           </div>
           <div className="realscout-widget-container">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw" />
+            <realscout-home-value agent-encoded-id={BUSINESS.realscoutAgentEncodedId} />
           </div>
         </div>
       </section>
@@ -53,7 +50,7 @@ export default function SellersPage() {
             <h2>Ready to Sell?</h2>
             <p>Get your free home valuation and expert marketing plan.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
             </div>
           </div>

@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { createPageMetadata } from '@/lib/seo';
+import { BUSINESS, SOCIAL_URLS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = {
-  title: 'Contact Dr. Jan Duffy | Tule Springs Real Estate | (702) 500-1942',
-  description: 'Contact Dr. Jan Duffy for Tule Springs real estate. Call (702) 500-1942 or email DrDuffy@bhhsnv.com. Berkshire Hathaway HomeServices Nevada Properties.',
-  openGraph: { url: 'https://www.homesintulesprings.com/contact' },
-};
+export const metadata = createPageMetadata({
+  title: 'Contact Dr. Jan Duffy | Tule Springs Real Estate',
+  description:
+    'Contact Dr. Jan Duffy for Tule Springs and North Las Vegas real estate support. Call, email, or send a message for buyer and seller guidance.',
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
@@ -19,18 +23,11 @@ export default function ContactPage() {
             <p>Live MLS listings updated in real time.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.
+            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
           </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="NEWEST"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,OTHER"
-              price-min="300000"
-              price-max="900000"
-            />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
         </div>
       </section>
@@ -45,20 +42,20 @@ export default function ContactPage() {
                   <ul className="contact-details">
                     <li>
                       <i className="fas fa-phone"></i>
-                      <div><strong>Phone</strong><br /><a href="tel:+17025001942">(702) 500-1942</a></div>
+                      <div><strong>Phone</strong><br /><a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phoneDisplay}</a></div>
                     </li>
                     <li>
                       <i className="fas fa-envelope"></i>
-                      <div><strong>Email</strong><br /><a href="mailto:DrDuffy@bhhsnv.com">DrDuffy@bhhsnv.com</a></div>
+                      <div><strong>Email</strong><br /><a href={`mailto:${BUSINESS.email}`}>{BUSINESS.email}</a></div>
                     </li>
                     <li>
                       <i className="fas fa-map-marker-alt"></i>
-                      <div><strong>Office</strong><br />2627 Nature Park Dr<br />North Las Vegas, NV 89084</div>
+                      <div><strong>Office</strong><br />{BUSINESS.officeAddress.streetAddress}<br />{BUSINESS.officeAddress.city}, {BUSINESS.officeAddress.region} {BUSINESS.officeAddress.postalCode}</div>
                     </li>
                   </ul>
                   <div className="contact-action-buttons">
-                    <a href="tel:+17025001942" className="btn btn-primary"><i className="fas fa-phone"></i> Call</a>
-                    <a href="https://www.google.com/maps/dir//2627+Nature+Park+Dr,+North+Las+Vegas,+NV+89084" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary"><i className="fas fa-directions"></i> Directions</a>
+                    <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary"><i className="fas fa-phone"></i> Call</a>
+                    <a href={`https://www.google.com/maps/dir//${encodeURIComponent(`${BUSINESS.officeAddress.streetAddress}, ${BUSINESS.officeAddress.city}, ${BUSINESS.officeAddress.region} ${BUSINESS.officeAddress.postalCode}`)}`} target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary"><i className="fas fa-directions"></i> Directions</a>
                     <a href="https://www.google.com/search?q=Dr+Jan+Duffy+Berkshire+Hathaway+North+Las+Vegas+reviews" target="_blank" rel="noopener noreferrer" className="btn btn-outline-primary"><i className="fas fa-star"></i> View Google Reviews</a>
                   </div>
                   <div className="office-hours">
@@ -70,9 +67,9 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div className="social-links" style={{ marginTop: '30px' }}>
-                    <a href="https://www.facebook.com/DrJanDuffy" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/drjanduffy" aria-label="Instagram"><i className="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/drjanduffy" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
+                    <a href={SOCIAL_URLS.facebook} aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+                    <a href={SOCIAL_URLS.instagram} aria-label="Instagram"><i className="fab fa-instagram"></i></a>
+                    <a href={SOCIAL_URLS.linkedin} aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
                   </div>
                 </div>
               </div>
@@ -83,17 +80,20 @@ export default function ContactPage() {
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group">
-                          <input type="text" className="form-control" name="name" placeholder="Your Name *" required />
+                          <label htmlFor="contact-name" className="visually-hidden">Your Name</label>
+                          <input id="contact-name" type="text" className="form-control" name="name" placeholder="Your Name *" autoComplete="name" required />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-group">
-                          <input type="tel" className="form-control" name="phone" placeholder="Phone Number *" required />
+                          <label htmlFor="contact-phone" className="visually-hidden">Phone Number</label>
+                          <input id="contact-phone" type="tel" className="form-control" name="phone" placeholder="Phone Number *" autoComplete="tel" required />
                         </div>
                       </div>
                     </div>
                     <div className="form-group">
-                      <input type="email" className="form-control" name="email" placeholder="Email Address *" required />
+                      <label htmlFor="contact-email" className="visually-hidden">Email Address</label>
+                      <input id="contact-email" type="email" className="form-control" name="email" placeholder="Email Address *" autoComplete="email" required />
                     </div>
                     <div className="form-group">
                       <select className="form-control" name="interest" id="interest" required aria-label="I'm interested in">
@@ -106,7 +106,8 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div className="form-group">
-                      <textarea className="form-control" name="message" rows={5} placeholder="Your Message *" required></textarea>
+                      <label htmlFor="contact-message" className="visually-hidden">Message</label>
+                      <textarea id="contact-message" className="form-control" name="message" rows={5} placeholder="Your Message *" required></textarea>
                     </div>
                     <button type="submit" className="btn btn-primary btn-lg btn-block">Send Message</button>
                   </form>
@@ -129,7 +130,7 @@ export default function ContactPage() {
                 <i className="fas fa-chevron-down"></i>
               </div>
               <div className="faq-answer">
-                <p>Monday–Friday 9:00 AM–5:00 PM and Saturday 10:00 AM–3:00 PM. Sunday by appointment. Call <a href="tel:+17025001942">(702) 500-1942</a> to schedule.</p>
+                <p>Monday–Friday 9:00 AM–5:00 PM and Saturday 10:00 AM–3:00 PM. Sunday by appointment. Call <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phoneDisplay}</a> to schedule.</p>
               </div>
             </div>
             <div className="faq-item">
@@ -138,7 +139,7 @@ export default function ContactPage() {
                 <i className="fas fa-chevron-down"></i>
               </div>
               <div className="faq-answer">
-                <p>Call (702) 500-1942, email DrDuffy@bhhsnv.com, or visit the office at 2627 Nature Park Dr, North Las Vegas, NV 89084. You can also use the contact form on this page.</p>
+                <p>Call {BUSINESS.phoneDisplay}, email {BUSINESS.email}, or visit the office at {BUSINESS.officeAddress.streetAddress}, {BUSINESS.officeAddress.city}, {BUSINESS.officeAddress.region} {BUSINESS.officeAddress.postalCode}. You can also use the contact form on this page.</p>
               </div>
             </div>
             <div className="faq-item">
@@ -159,14 +160,14 @@ export default function ContactPage() {
             <h2>Ready to Get Started?</h2>
             <p>Reach out today for a no-obligation conversation.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
-              <a href="mailto:DrDuffy@bhhsnv.com" className="btn btn-outline-light btn-lg">Email Dr. Duffy</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
+              <a href={`mailto:${BUSINESS.email}`} className="btn btn-outline-light btn-lg">Email Dr. Duffy</a>
             </div>
           </div>
         </div>
       </section>
       <div className="floating-actions">
-        <a href="tel:+17025001942" className="fab-btn fab-phone pulse-animation" aria-label="Call Dr. Duffy"><i className="fas fa-phone"></i></a>
+        <a href={`tel:${BUSINESS.phoneE164}`} className="fab-btn fab-phone pulse-animation" aria-label={`Call Dr. Duffy at ${BUSINESS.phoneDisplay}`}><i className="fas fa-phone"></i></a>
       </div>
     </>
   );

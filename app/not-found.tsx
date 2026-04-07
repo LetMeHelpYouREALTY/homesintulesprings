@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BUSINESS } from '@/lib/site-contact';
 
 export default function NotFound() {
   return (
@@ -15,8 +16,8 @@ export default function NotFound() {
         <Link href="/listings" className="btn btn-outline-primary">
           <i className="fas fa-search"></i> Listings
         </Link>
-        <a href="tel:+17025001942" className="btn btn-outline-primary">
-          <i className="fas fa-phone"></i> Call (702) 500-1942
+        <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-outline-primary">
+          <i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}
         </a>
       </div>
     </div>

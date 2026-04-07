@@ -1,13 +1,58 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "homesintulesprings.com" }],
+      "destination": "https://www.homesintulesprings.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.homesintulesprings.com" }],
+      "destination": "https://www.homesintulesprings.com/$1",
+      "permanent": true,
+      "missing": [{ "type": "header", "key": "x-forwarded-proto", "value": "https" }]
+    },
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/buyers.html", "destination": "/buyers", "permanent": true },
+    { "source": "/sellers.html", "destination": "/sellers", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/tule-springs.html", "destination": "/tule-springs", "permanent": true },
+    {
+      "source": "/tule-springs-homes-for-sale.html",
+      "destination": "/tule-springs-homes-for-sale",
+      "permanent": true
+    },
+    { "source": "/tule-springs-villages.html", "destination": "/tule-springs-villages", "permanent": true },
+    { "source": "/tule-springs-schools.html", "destination": "/tule-springs-schools", "permanent": true },
+    { "source": "/tule-springs-amenities.html", "destination": "/tule-springs-amenities", "permanent": true },
+    { "source": "/why-tule-springs.html", "destination": "/why-tule-springs", "permanent": true },
+    { "source": "/tule-springs-real-estate.html", "destination": "/tule-springs-real-estate", "permanent": true },
+    {
+      "source": "/tule-springs-neighborhoods.html",
+      "destination": "/tule-springs-neighborhoods",
+      "permanent": true
+    },
+    {
+      "source": "/north-las-vegas-tule-springs.html",
+      "destination": "/north-las-vegas-tule-springs",
+      "permanent": true
+    },
+    { "source": "/tule-springs-new-homes.html", "destination": "/tule-springs-new-homes", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://em.realscout.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://em.realscout.com https://www.realscout.com; frame-src 'self' https://www.google.com;" }
       ]
     },
     {

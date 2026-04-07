@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { BUSINESS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export default function HomePage() {
   return (
@@ -22,8 +24,8 @@ export default function HomePage() {
                   <i className="fas fa-calculator"></i>
                   <span>Home Value</span>
                 </a>
-                <a href="tel:+17025001942" className="action-card">
-                  <i className="fas fa-phone"></i>
+                <a href={`tel:${BUSINESS.phoneE164}`} className="action-card">
+                  <i className="fas fa-phone" aria-hidden="true"></i>
                   <span>Call Now</span>
                 </a>
               </div>
@@ -39,17 +41,10 @@ export default function HomePage() {
             <h2>Search Tule Springs Homes For Sale</h2>
             <p>Browse real-time MLS listings updated every 15 minutes</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.</p>
+          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings
-              agent-encoded-id="QWdlbnQtMjI1MDUw"
-              sort-order="NEWEST"
-              listing-status="For Sale"
-              property-types="SFR,MF,TC,OTHER"
-              price-min="300000"
-              price-max="900000"
-            />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
           <div className="benefits-row">
             <div className="benefit-item">
@@ -99,7 +94,7 @@ export default function HomePage() {
                 </ul>
                 <div className="realscout-widget-container">
                   {/* @ts-expect-error RealScout custom element */}
-                  <realscout-home-value agent-encoded-id="QWdlbnQtMjI1MDUw" />
+                  <realscout-home-value agent-encoded-id={BUSINESS.realscoutAgentEncodedId} />
                 </div>
               </div>
             </div>
@@ -113,7 +108,7 @@ export default function HomePage() {
                 <div className="realscout-widget-container">
                   {/* @ts-expect-error RealScout custom element */}
                   <realscout-office-listings
-                    agent-encoded-id="QWdlbnQtMjI1MDUw"
+                    agent-encoded-id={BUSINESS.realscoutAgentEncodedId}
                     sort-order="NEWEST"
                     listing-status="Sold"
                     property-types="SFR,MF,TC,OTHER"
@@ -126,7 +121,7 @@ export default function HomePage() {
             <div className="benefit-item">
               <i className="fas fa-dollar-sign"></i>
               <h4>Top Dollar</h4>
-              <p>Strategic pricing to maximize your sale price</p>
+              <p>Strategic pricing and local market positioning</p>
             </div>
             <div className="benefit-item">
               <i className="fas fa-camera"></i>
@@ -136,12 +131,12 @@ export default function HomePage() {
             <div className="benefit-item">
               <i className="fas fa-clock"></i>
               <h4>Fast Results</h4>
-              <p>Average 24 days on market in Tule Springs</p>
+              <p>Guidance based on current local market conditions</p>
             </div>
             <div className="benefit-item">
               <i className="fas fa-handshake"></i>
               <h4>Expert Negotiation</h4>
-              <p>500+ transactions closed since 2008</p>
+              <p>Clear communication from consultation through closing</p>
             </div>
           </div>
         </div>
@@ -187,21 +182,21 @@ export default function HomePage() {
               <p>Serving Tule Springs and North Las Vegas since 2008. Whether you&apos;re buying your first home or selling to move up, I provide personalized service backed by Berkshire Hathaway HomeServices.</p>
               <div className="agent-stats">
                 <div className="agent-stat">
-                  <strong>500+</strong>
-                  <span>Homes Sold</span>
+                  <strong>Local</strong>
+                  <span>Tule Springs Focus</span>
                 </div>
                 <div className="agent-stat">
                   <strong>17+</strong>
                   <span>Years Experience</span>
                 </div>
                 <div className="agent-stat">
-                  <strong>4.9★</strong>
-                  <span>Client Rating</span>
+                  <strong>Client-First</strong>
+                  <span>Guidance</span>
                 </div>
               </div>
               <div className="agent-actions">
-                <a href="tel:+17025001942" className="btn btn-primary"><i className="fas fa-phone"></i> (702) 500-1942</a>
-                <a href="mailto:DrDuffy@bhhsnv.com" className="btn btn-outline-primary"><i className="fas fa-envelope"></i> Email Me</a>
+                <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary"><i className="fas fa-phone"></i> {BUSINESS.phoneDisplay}</a>
+                <a href={`mailto:${BUSINESS.email}`} className="btn btn-outline-primary"><i className="fas fa-envelope"></i> Email Me</a>
               </div>
             </div>
           </div>
@@ -214,7 +209,7 @@ export default function HomePage() {
             <h2>Ready to Make Your Move?</h2>
             <p>Whether buying or selling, I&apos;m here to help you every step of the way.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <Link href="/contact" className="btn btn-outline-light btn-lg"><i className="fas fa-envelope"></i> Send Message</Link>
             </div>
           </div>
@@ -222,7 +217,7 @@ export default function HomePage() {
       </section>
 
       <div className="floating-actions">
-        <a href="tel:+17025001942" className="fab-btn fab-phone pulse-animation" aria-label="Call Dr. Duffy">
+        <a href={`tel:${BUSINESS.phoneE164}`} className="fab-btn fab-phone pulse-animation" aria-label={`Call Dr. Duffy at ${BUSINESS.phoneDisplay}`}>
           <i className="fas fa-phone"></i>
         </a>
       </div>

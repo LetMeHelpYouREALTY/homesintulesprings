@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { createPageMetadata } from '@/lib/seo';
+import { BUSINESS } from '@/lib/site-contact';
+import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = {
+export const metadata = createPageMetadata({
   title: 'Tule Springs Neighborhoods | North Las Vegas Areas',
-  description: 'Explore Tule Springs neighborhoods. Find the right area for your lifestyle with Dr. Jan Duffy, local real estate expert.',
-  openGraph: { url: 'https://www.homesintulesprings.com/tule-springs-neighborhoods' },
-};
+  description:
+    'Explore Tule Springs neighborhoods and find the right North Las Vegas area for your lifestyle with Dr. Jan Duffy.',
+  path: '/tule-springs-neighborhoods',
+});
 
 export default function TuleSpringsNeighborhoodsPage() {
   return (
@@ -18,10 +22,10 @@ export default function TuleSpringsNeighborhoodsPage() {
             <h2>Homes in Tule Springs Neighborhoods</h2>
             <p>Browse listings by neighborhood.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> All listing data is deemed reliable but not guaranteed. Listings displayed are from the MLS. &copy; 2026 the listing broker. All rights reserved.</p>
+          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
-            <realscout-office-listings agent-encoded-id="QWdlbnQtMjI1MDUw" sort-order="NEWEST" listing-status="For Sale" property-types="SFR,MF,TC,OTHER" price-min="300000" price-max="900000" />
+            <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
         </div>
       </section>
@@ -31,7 +35,7 @@ export default function TuleSpringsNeighborhoodsPage() {
             <h2>Find Your Neighborhood</h2>
             <p>Dr. Jan Duffy knows every Tule Springs area.</p>
             <div className="cta-buttons">
-              <a href="tel:+17025001942" className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call (702) 500-1942</a>
+              <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
             </div>
           </div>
