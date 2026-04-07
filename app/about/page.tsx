@@ -1,27 +1,24 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'About Dr. Jan Duffy | Tule Springs REALTOR®',
-  description:
-    'Meet Dr. Jan Duffy, REALTOR® serving Tule Springs and North Las Vegas with Berkshire Hathaway HomeServices Nevada Properties.',
-  path: '/about',
-});
+export const metadata = routeMetadata('/about');
 
 export default function AboutPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/about" />
       <PageBanner title="About Dr. Jan Duffy" subtitle="Your Tule Springs Real Estate Expert" />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Browse Tule Springs Listings</h2>
-            <p>Live MLS listings updated in real time.</p>
+            <p>MLS listings update frequently—use search as a starting point, then confirm next steps with Dr. Duffy.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">

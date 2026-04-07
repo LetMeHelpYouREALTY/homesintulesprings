@@ -18,10 +18,21 @@ export const BUSINESS = {
   realscoutAgentEncodedId: 'QWdlbnQtMjI1MDUw',
 } as const;
 
+/** Matches visible office hours on key pages + GBP-style presentation. */
+export const OPENING_HOURS_SCHEMA = ['Mo-Fr 09:00-17:00', 'Sa 10:00-15:00'] as const;
+
+/** Primary agent headshot for JSON-LD and metadata (filename contains spaces). */
+export function getAgentHeadshotUrl(): string {
+  return `${SITE_URL}/images/agents/${encodeURIComponent('zillowDr Jan new.jpg')}`;
+}
+
 export const BUSINESS_IDS = {
+  /** Brokerage / parent organization */
   org: `${SITE_URL}/#organization`,
   agent: `${SITE_URL}/#agent`,
   website: `${SITE_URL}/#website`,
+  /** Office / local entity (NAP-aligned LocalBusiness-style node) */
+  localBusiness: `${SITE_URL}/#localbusiness`,
 } as const;
 
 export const SOCIAL_URLS = {

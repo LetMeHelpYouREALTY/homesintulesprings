@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BUSINESS, BUSINESS_IDS, SITE_URL } from '@/lib/site-contact';
+import { BUSINESS, BUSINESS_IDS, getAgentHeadshotUrl, OPENING_HOURS_SCHEMA, SITE_URL } from '@/lib/site-contact';
 
 type PageMetadataInput = {
   title: string;
@@ -38,7 +38,7 @@ export function getBaseMetadata(): Metadata {
       template: '%s | Homes in Tule Springs',
     },
     description:
-      'Search homes for sale in Tule Springs, North Las Vegas. Browse real-time MLS listings, request a home valuation, and connect with Dr. Jan Duffy.',
+      'Search homes for sale in Tule Springs, North Las Vegas. Browse MLS listings, request a home valuation, and connect with Dr. Jan Duffy.',
     alternates: { canonical: '/' },
     robots: {
       index: true,
@@ -55,34 +55,56 @@ export function getBaseMetadata(): Metadata {
   };
 }
 
+const postalAddress = {
+  '@type': 'PostalAddress' as const,
+  streetAddress: BUSINESS.officeAddress.streetAddress,
+  addressLocality: BUSINESS.officeAddress.city,
+  addressRegion: BUSINESS.officeAddress.region,
+  postalCode: BUSINESS.officeAddress.postalCode,
+  addressCountry: BUSINESS.officeAddress.country,
+};
+
+/**
+ * Global JSON-LD graph: Organization (brokerage), LocalBusiness/office entity, RealEstateAgent, WebSite.
+ * Keeps @ids stable for GEO/entity consistency.
+ */
 export function getOrgGraph() {
+  const agentImage = getAgentHeadshotUrl();
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'RealEstateAgent',
-        '@id': BUSINESS_IDS.agent,
-        name: BUSINESS.name,
-        image: `${SITE_URL}/images/agents/zillowDr Jan new.jpg`,
-        url: SITE_URL,
-        telephone: BUSINESS.phoneE164,
-        email: BUSINESS.email,
-        areaServed: { '@type': 'Place', name: BUSINESS.serviceArea },
-        memberOf: { '@id': BUSINESS_IDS.org },
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: BUSINESS.officeAddress.streetAddress,
-          addressLocality: BUSINESS.officeAddress.city,
-          addressRegion: BUSINESS.officeAddress.region,
-          postalCode: BUSINESS.officeAddress.postalCode,
-          addressCountry: BUSINESS.officeAddress.country,
-        },
-      },
-      {
-        '@type': 'RealEstateAgent',
+        '@type': 'Organization',
         '@id': BUSINESS_IDS.org,
         name: BUSINESS.legalName,
         url: SITE_URL,
+      },
+      {
+        '@type': 'LocalBusiness',
+        '@id': BUSINESS_IDS.localBusiness,
+        name: `${BUSINESS.name} | ${BUSINESS.legalName}`,
+        image: agentImage,
+        url: SITE_URL,
+        telephone: BUSINESS.phoneE164,
+        email: BUSINESS.email,
+        address: postalAddress,
+        openingHours: [...OPENING_HOURS_SCHEMA],
+        parentOrganization: { '@id': BUSINESS_IDS.org },
+      },
+      {
+        '@type': 'RealEstateAgent',
+        '@id': BUSINESS_IDS.agent,
+        name: BUSINESS.name,
+        image: agentImage,
+        url: SITE_URL,
+        telephone: BUSINESS.phoneE164,
+        email: BUSINESS.email,
+        license: BUSINESS.license,
+        worksFor: { '@id': BUSINESS_IDS.localBusiness },
+        memberOf: { '@id': BUSINESS_IDS.org },
+        areaServed: { '@type': 'Place', name: BUSINESS.serviceArea },
+        address: postalAddress,
       },
       {
         '@type': 'WebSite',
@@ -90,6 +112,14 @@ export function getOrgGraph() {
         name: 'Homes in Tule Springs',
         url: SITE_URL,
         publisher: { '@id': BUSINESS_IDS.agent },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${SITE_URL}/listings?search={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
       },
     ],
   };

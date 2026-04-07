@@ -41,6 +41,22 @@ export function Footer() {
               <li><Link href="/tule-springs-new-homes">New Homes</Link></li>
               <li><Link href="/why-tule-springs">Why Live Here</Link></li>
             </ul>
+            <h3 className="mt-3">Popular Searches</h3>
+            <ul className="footer-links">
+              <li><Link href="/listings">North Las Vegas homes for sale</Link></li>
+              <li><Link href="/tule-springs-homes-for-sale">Tule Springs single-family homes</Link></li>
+              <li><Link href="/tule-springs-new-homes">New construction in Tule Springs</Link></li>
+              <li><Link href="/tule-springs-schools">Homes near Tule Springs schools</Link></li>
+              <li><Link href="/tule-springs-amenities">Homes near parks and trails</Link></li>
+            </ul>
+            <h3 className="mt-3">Trusted Local Resources</h3>
+            <ul className="footer-links">
+              <li><a href="https://www.cityofnorthlasvegas.com/" target="_blank" rel="noopener noreferrer">City of North Las Vegas</a></li>
+              <li><a href="https://www.clarkcountynv.gov/" target="_blank" rel="noopener noreferrer">Clark County Nevada</a></li>
+              <li><a href="https://www.ccsd.net/" target="_blank" rel="noopener noreferrer">Clark County School District</a></li>
+              <li><a href="https://www.lvvwd.com/" target="_blank" rel="noopener noreferrer">Las Vegas Valley Water District</a></li>
+              <li><a href="https://www.rtcsnv.com/" target="_blank" rel="noopener noreferrer">RTC Southern Nevada</a></li>
+            </ul>
             <h3 className="mt-3">Follow Dr. Duffy</h3>
             <div className="social-links">
               <a href={SOCIAL_URLS.facebook} aria-label="Facebook"><i className="fab fa-facebook-f" aria-hidden="true"></i></a>

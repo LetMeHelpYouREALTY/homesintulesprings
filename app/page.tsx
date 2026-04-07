@@ -1,6 +1,10 @@
+import Image from 'next/image';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { routeMetadata } from '@/lib/page-seo';
+
+export const metadata = routeMetadata('');
 
 export default function HomePage() {
   return (
@@ -13,15 +17,15 @@ export default function HomePage() {
               <p className="hero-subtitle">Search homes, get valuations, and connect with Dr. Jan Duffy</p>
               <div className="hero-actions">
                 <a href="#buy" className="action-card">
-                  <i className="fas fa-search"></i>
+                  <i className="fas fa-search" aria-hidden="true"></i>
                   <span>Search Homes</span>
                 </a>
                 <a href="#sell" className="action-card">
-                  <i className="fas fa-home"></i>
+                  <i className="fas fa-home" aria-hidden="true"></i>
                   <span>Sell My Home</span>
                 </a>
                 <a href="#valuation" className="action-card">
-                  <i className="fas fa-calculator"></i>
+                  <i className="fas fa-calculator" aria-hidden="true"></i>
                   <span>Home Value</span>
                 </a>
                 <a href={`tel:${BUSINESS.phoneE164}`} className="action-card">
@@ -39,7 +43,7 @@ export default function HomePage() {
           <div className="section-header">
             <span className="section-badge">For Buyers</span>
             <h2>Search Tule Springs Homes For Sale</h2>
-            <p>Browse real-time MLS listings updated every 15 minutes</p>
+            <p>Browse MLS listings that update frequently—availability and pricing can change quickly.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">
@@ -142,31 +146,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="market-snapshot">
+      <section className="market-snapshot" aria-labelledby="market-snapshot-heading">
         <div className="container">
           <div className="section-header">
-            <h2>Tule Springs Market Snapshot</h2>
-            <p>January 2026 | Updated Monthly</p>
+            <h2 id="market-snapshot-heading">Tule Springs Market Context</h2>
+            <p>Medians, days on market, and inventory shift with seasonality and rates—ask for a current neighborhood brief.</p>
           </div>
-          <div className="stats-grid">
-            <div className="stat-card">
-              <span className="stat-value">$485K</span>
-              <span className="stat-label">Median Price</span>
-              <span className="stat-trend positive"><i className="fas fa-arrow-up"></i> 5.1%</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-value">24</span>
-              <span className="stat-label">Days on Market</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-value">98%</span>
-              <span className="stat-label">Sale-to-List Ratio</span>
-            </div>
-            <div className="stat-card">
-              <span className="stat-value">156</span>
-              <span className="stat-label">Active Listings</span>
-            </div>
-          </div>
+          <p className="text-center text-muted" style={{ maxWidth: '640px', margin: '0 auto' }}>
+            For pricing strategy and timing, Dr. Duffy can share recent comparable activity and listing trends for your specific
+            village and price band—without relying on static site-wide statistics that may not match your home.
+          </p>
         </div>
       </section>
 
@@ -174,7 +163,15 @@ export default function HomePage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-4 text-center">
-              <img src="/images/agents/design 04_new 2.jpg" alt="Dr. Jan Duffy, REALTOR® headshot" className="agent-photo" />
+              <Image
+                src="/images/agents/design 04_new 2.jpg"
+                alt="Dr. Jan Duffy, REALTOR® — Berkshire Hathaway HomeServices Nevada Properties"
+                width={360}
+                height={360}
+                className="agent-photo"
+                priority
+                sizes="(max-width: 768px) 100vw, 360px"
+              />
             </div>
             <div className="col-md-8">
               <h2>Dr. Jan Duffy</h2>

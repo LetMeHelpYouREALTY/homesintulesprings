@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Why Live in Tule Springs | North Las Vegas Community',
-  description:
-    'Learn why buyers choose Tule Springs in North Las Vegas, from neighborhood features to local lifestyle and housing options.',
-  path: '/why-tule-springs',
-});
+export const metadata = routeMetadata('/why-tule-springs');
 
 export default function WhyTuleSpringsPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/why-tule-springs" />
       <PageBanner title="Why Live in Tule Springs" subtitle="North Las Vegas Community" />
       <section className="buyer-section realscout-below-hero">
         <div className="container">

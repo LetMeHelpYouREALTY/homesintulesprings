@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'North Las Vegas & Tule Springs | Real Estate Guide',
-  description:
-    'Explore North Las Vegas and Tule Springs real estate with local market guidance and live listings from Dr. Jan Duffy.',
-  path: '/north-las-vegas-tule-springs',
-});
+export const metadata = routeMetadata('/north-las-vegas-tule-springs');
 
 export default function NorthLasVegasTuleSpringsPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/north-las-vegas-tule-springs" />
       <PageBanner title="North Las Vegas & Tule Springs" subtitle="Real Estate Guide" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'North Las Vegas' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">

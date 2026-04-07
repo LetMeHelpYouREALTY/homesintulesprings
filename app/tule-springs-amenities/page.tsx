@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Tule Springs Amenities | Parks, Trails & Lifestyle',
-  description:
-    'Discover Tule Springs amenities, parks, trails, and recreation, then search nearby homes with Dr. Jan Duffy.',
-  path: '/tule-springs-amenities',
-});
+export const metadata = routeMetadata('/tule-springs-amenities');
 
 export default function TuleSpringsAmenitiesPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/tule-springs-amenities" />
       <PageBanner title="Tule Springs Amenities" subtitle="Parks, Trails & Lifestyle" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Amenities' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">

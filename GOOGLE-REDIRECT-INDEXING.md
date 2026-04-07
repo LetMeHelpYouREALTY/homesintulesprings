@@ -58,3 +58,51 @@ Configure Vercel (and Cloudflare if used) so that:
 - [ ] GSC property is **https://www.homesintulesprings.com**; sitemap submitted; Request indexing for key pages
 
 After this, "Page with redirect" should decrease as Google recrawls and indexes the canonical URLs.
+
+---
+
+## 6. Resolve GSC “Page with redirect” (validation workflow)
+
+**What the report means:** URLs such as `http://`, apex (non-`www`), or legacy `*.html` paths are **not** errors—they redirect to the canonical site. Google lists them as “Page with redirect” because it does not index the **source** URL; it should index the **destination**.
+
+### 6a. Inspect canonical destinations (success = indexed)
+
+In **Google Search Console** → **URL Inspection**, paste each **canonical** URL below (same set as `app/sitemap.ts` / `NAV_ROUTES` in `lib/site-contact.ts`). Confirm the live page is **200** and indexing status shows **URL is on Google** (or acceptable alternate) for the **destination**, not the redirecting variant.
+
+| Path | Full canonical URL |
+|------|----------------------|
+| `/` | `https://www.homesintulesprings.com/` |
+| `/buyers` | `https://www.homesintulesprings.com/buyers` |
+| `/sellers` | `https://www.homesintulesprings.com/sellers` |
+| `/listings` | `https://www.homesintulesprings.com/listings` |
+| `/about` | `https://www.homesintulesprings.com/about` |
+| `/contact` | `https://www.homesintulesprings.com/contact` |
+| `/tule-springs` | `https://www.homesintulesprings.com/tule-springs` |
+| `/tule-springs-homes-for-sale` | `https://www.homesintulesprings.com/tule-springs-homes-for-sale` |
+| `/tule-springs-villages` | `https://www.homesintulesprings.com/tule-springs-villages` |
+| `/tule-springs-schools` | `https://www.homesintulesprings.com/tule-springs-schools` |
+| `/tule-springs-amenities` | `https://www.homesintulesprings.com/tule-springs-amenities` |
+| `/why-tule-springs` | `https://www.homesintulesprings.com/why-tule-springs` |
+| `/tule-springs-real-estate` | `https://www.homesintulesprings.com/tule-springs-real-estate` |
+| `/tule-springs-neighborhoods` | `https://www.homesintulesprings.com/tule-springs-neighborhoods` |
+| `/north-las-vegas-tule-springs` | `https://www.homesintulesprings.com/north-las-vegas-tule-springs` |
+| `/tule-springs-new-homes` | `https://www.homesintulesprings.com/tule-springs-new-homes` |
+
+- If **destinations** are indexed: treat the redirect report as **expected**; no code change required for those rows.
+- Use **Request indexing** sparingly for high-priority canonical URLs if needed.
+
+### 6b. Validate Fix — only when needed
+
+Click **Validate Fix** in the Page indexing report **only if** GSC shows **stale or wrong** redirect behavior (e.g. wrong target, soft redirect, or chain). Do **not** validate merely because the count is non-zero—redirect sources are often permanently non-indexed by design.
+
+### 6c. Canonical link audit (repo)
+
+- **App Router** internal links use path-only `Link href="/..."` (no `.html`, no apex, no `http`)—see `components/Header.tsx`, `components/Footer.tsx`.
+- **Sitemap / robots** use `SITE_URL` = `https://www.homesintulesprings.com` only.
+- **Legacy static `*.html` files** in the repo root (if present) are superseded by Next routes; `vercel.json` redirects legacy paths to clean URLs. Prefer linking to `/path` everywhere; update external profiles (GBP, social bios) to **https://www.homesintulesprings.com/...** only.
+
+### Success criteria
+
+- Canonical **https://www.homesintulesprings.com/...** URLs are indexed.
+- Redirect variants (`http`, apex, `/page.html`) remain **non-indexed** with valid **301/308** to the canonical URL.
+- Sitemap and primary internal navigation do not advertise non-canonical URLs.

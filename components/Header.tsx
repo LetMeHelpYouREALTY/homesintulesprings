@@ -39,7 +39,9 @@ export function Header() {
                 </li>
                 <li><Link href="/about">About</Link></li>
                 <li>
-                  <a href="#schedule">Schedule</a>
+                  <a href="#schedule" aria-label="Schedule a call with Calendly">
+                    Schedule
+                  </a>
                 </li>
                 <li><Link href="/contact">Contact</Link></li>
               </ul>

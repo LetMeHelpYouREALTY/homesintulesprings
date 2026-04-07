@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Tule Springs Neighborhoods | North Las Vegas Areas',
-  description:
-    'Explore Tule Springs neighborhoods and find the right North Las Vegas area for your lifestyle with Dr. Jan Duffy.',
-  path: '/tule-springs-neighborhoods',
-});
+export const metadata = routeMetadata('/tule-springs-neighborhoods');
 
 export default function TuleSpringsNeighborhoodsPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/tule-springs-neighborhoods" />
       <PageBanner title="Tule Springs Neighborhoods" subtitle="North Las Vegas Areas" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Neighborhoods' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">

@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Tule Springs New Homes | New Construction North Las Vegas',
-  description:
-    'Browse new construction and newly listed homes in Tule Springs, North Las Vegas with guidance from Dr. Jan Duffy.',
-  path: '/tule-springs-new-homes',
-});
+export const metadata = routeMetadata('/tule-springs-new-homes');
 
 export default function TuleSpringsNewHomesPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/tule-springs-new-homes" />
       <PageBanner title="Tule Springs New Homes" subtitle="New Construction North Las Vegas" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'New Homes' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">

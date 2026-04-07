@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
+import { Noto_Serif, Open_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/Header';
@@ -8,6 +9,18 @@ import { CloudflareAnalytics } from '@/components/CloudflareAnalytics';
 import { CalendlyBadge } from '@/components/CalendlyBadge';
 import { CalendlyScheduleSection } from '@/components/CalendlyScheduleSection';
 import { getBaseMetadata, getOrgGraph } from '@/lib/seo';
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+});
+
+const notoSerif = Noto_Serif({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-heading',
+});
 
 export const metadata: Metadata = getBaseMetadata();
 
@@ -23,10 +36,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en-US">
+    <html lang="en-US" className={`${openSans.variable} ${notoSerif.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -35,17 +46,16 @@ export default function RootLayout({
         />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Noto+Serif:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgGraph) }}
         />
       </head>
-      <body>
+      <body className={openSans.className}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WT2PRE8Q93"
           strategy="afterInteractive"
@@ -68,8 +78,10 @@ export default function RootLayout({
         />
         <div id="main-wrapper">
           <Header />
-          {children}
-          <CalendlyScheduleSection />
+          <main id="main-content">
+            {children}
+            <CalendlyScheduleSection />
+          </main>
           <Footer />
         </div>
         <CalendlyBadge />

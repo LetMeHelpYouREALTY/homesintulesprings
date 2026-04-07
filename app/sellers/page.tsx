@@ -1,26 +1,23 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Sell Your Home in Tule Springs | Home Valuation',
-  description:
-    'Request a home valuation and seller strategy for Tule Springs and North Las Vegas with Dr. Jan Duffy.',
-  path: '/sellers',
-});
+export const metadata = routeMetadata('/sellers');
 
 export default function SellersPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/sellers" />
       <PageBanner title="Sell Your Tule Springs Home" subtitle="Get Top Dollar with Expert Marketing & Negotiation" />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Browse Tule Springs Listings</h2>
-            <p>Live MLS listings updated in real time.</p>
+            <p>MLS listings update frequently; Dr. Duffy can help you interpret what&apos;s active and what&apos;s already under contract.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
             <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}

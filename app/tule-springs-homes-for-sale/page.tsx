@@ -1,26 +1,23 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Tule Springs Homes for Sale | North Las Vegas Listings',
-  description:
-    'Search Tule Springs homes for sale with real-time MLS listings in North Las Vegas and local support from Dr. Jan Duffy.',
-  path: '/tule-springs-homes-for-sale',
-});
+export const metadata = routeMetadata('/tule-springs-homes-for-sale');
 
 export default function TuleSpringsHomesForSalePage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/tule-springs-homes-for-sale" />
       <PageBanner title="Tule Springs Homes for Sale" subtitle="Live MLS Listings in North Las Vegas" />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">For Sale</span>
             <h2>Search Tule Springs Listings</h2>
-            <p>Real-time MLS listings updated every 15 minutes.</p>
+            <p>MLS listings update frequently—confirm status, price, and terms on active listings before you tour.</p>
           </div>
           <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">

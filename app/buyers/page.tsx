@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Buy a Home in Tule Springs | Buyer Services',
-  description:
-    'Browse homes for sale in Tule Springs and North Las Vegas with real-time MLS search and local guidance from Dr. Jan Duffy.',
-  path: '/buyers',
-});
+export const metadata = routeMetadata('/buyers');
 
 export default function BuyersPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/buyers" />
       <PageBanner title="Buy a Home in Tule Springs" subtitle="Your Dream Home Awaits in North Las Vegas" />
       <section className="buyer-section">
         <div className="container">

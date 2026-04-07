@@ -1,19 +1,16 @@
 import { PageBanner } from '@/components/PageBanner';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
-import { createPageMetadata } from '@/lib/seo';
+import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
+import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
-export const metadata = createPageMetadata({
-  title: 'Tule Springs Schools | North Las Vegas Schools',
-  description:
-    'Explore schools serving Tule Springs and find homes near preferred school zones in North Las Vegas with Dr. Jan Duffy.',
-  path: '/tule-springs-schools',
-});
+export const metadata = routeMetadata('/tule-springs-schools');
 
 export default function TuleSpringsSchoolsPage() {
   return (
     <>
+      <BreadcrumbJsonLd path="/tule-springs-schools" />
       <PageBanner title="Tule Springs Schools" subtitle="North Las Vegas Schools" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Schools' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
