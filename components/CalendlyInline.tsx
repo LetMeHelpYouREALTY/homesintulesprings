@@ -8,14 +8,6 @@ type CalendlyInlineProps = {
   minHeight?: number;
 };
 
-declare global {
-  interface Window {
-    Calendly?: {
-      initInlineWidget: (options: { url: string; parentElement: HTMLElement }) => void;
-    };
-  }
-}
-
 /**
  * Inline Calendly embed. Uses initInlineWidget so the iframe mounts reliably with Next.js
  * (root layout loads widget.js once for all pages).

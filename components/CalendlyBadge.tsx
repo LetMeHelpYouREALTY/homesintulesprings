@@ -3,20 +3,6 @@
 import { useEffect, useRef } from 'react';
 import { CALENDLY_EVENT_URL } from '@/lib/calendly';
 
-declare global {
-  interface Window {
-    Calendly?: {
-      initBadgeWidget: (options: {
-        url: string;
-        text: string;
-        color: string;
-        textColor: string;
-        branding: boolean;
-      }) => void;
-    };
-  }
-}
-
 /** Floating Calendly badge — mount once in root layout. */
 export function CalendlyBadge() {
   const didInit = useRef(false);

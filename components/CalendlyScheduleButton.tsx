@@ -8,14 +8,6 @@ type CalendlyScheduleButtonProps = {
   children?: ReactNode;
 };
 
-declare global {
-  interface Window {
-    Calendly?: {
-      initPopupWidget: (options: { url: string }) => void;
-    };
-  }
-}
-
 /**
  * Opens Calendly popup (same event as inline/badge). Requires widget.js in layout.
  */
