@@ -11,13 +11,13 @@ export default function TuleSpringsNeighborhoodsPage() {
   return (
     <>
       <BreadcrumbJsonLd path="/tule-springs-neighborhoods" />
-      <PageBanner title="Tule Springs Neighborhoods" subtitle="North Las Vegas Areas" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Neighborhoods' }]} />
+      <PageBanner title="Tule Springs Neighborhoods" subtitle="North Las Vegas, Nevada Areas" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Neighborhoods' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Homes in Tule Springs Neighborhoods</h2>
-            <p>Browse listings by neighborhood.</p>
+            <p>Browse listings by neighborhood across Tule Springs and surrounding North Las Vegas communities.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -29,7 +29,7 @@ export default function TuleSpringsNeighborhoodsPage() {
         <div className="container">
           <div className="cta-content text-center">
             <h2>Find Your Neighborhood</h2>
-            <p>Dr. Jan Duffy knows every Tule Springs area.</p>
+            <p>Dr. Jan Duffy knows every Tule Springs area and nearby North Las Vegas neighborhood.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>

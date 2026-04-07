@@ -11,13 +11,13 @@ export default function BuyersPage() {
   return (
     <>
       <BreadcrumbJsonLd path="/buyers" />
-      <PageBanner title="Buy a Home in Tule Springs" subtitle="Your Dream Home Awaits in North Las Vegas" />
+      <PageBanner title="Buy a Home in Tule Springs" subtitle="Your Dream Home Awaits in North Las Vegas, Nevada" />
       <section className="buyer-section">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">For Sale Now</span>
             <h2>Search Available Homes</h2>
-            <p>Browse home listings in Tule Springs and surrounding areas</p>
+            <p>Browse home listings in Tule Springs, North Las Vegas, and nearby 89084 neighborhoods.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -51,7 +51,7 @@ export default function BuyersPage() {
         <div className="container">
           <div className="cta-content text-center">
             <h2>Ready to Find Your Home?</h2>
-            <p>Dr. Jan Duffy will guide you every step of the way.</p>
+            <p>Dr. Jan Duffy will guide you through every step of buying in Tule Springs and North Las Vegas, Nevada.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>

@@ -11,13 +11,13 @@ export default function TuleSpringsRealEstatePage() {
   return (
     <>
       <BreadcrumbJsonLd path="/tule-springs-real-estate" />
-      <PageBanner title="Tule Springs Real Estate" subtitle="North Las Vegas Market" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Real Estate' }]} />
+      <PageBanner title="Tule Springs Real Estate" subtitle="North Las Vegas, Nevada Market" breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Tule Springs', href: '/tule-springs' }, { label: 'Real Estate' }]} />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Tule Springs Listings</h2>
-            <p>See the latest home listings and local market insight.</p>
+            <p>See the latest home listings and local market insight for Tule Springs and North Las Vegas, Nevada.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -29,7 +29,7 @@ export default function TuleSpringsRealEstatePage() {
         <div className="container">
           <div className="cta-content text-center">
             <h2>Buy or Sell in Tule Springs</h2>
-            <p>Expert representation from Dr. Jan Duffy.</p>
+            <p>Expert North Las Vegas representation from Dr. Jan Duffy.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>

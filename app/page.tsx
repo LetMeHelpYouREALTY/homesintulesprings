@@ -14,8 +14,8 @@ export default function HomePage() {
         <div className="hero-slide" style={{ backgroundImage: "url('/images/tule-springs-park.jpg')" }}>
           <div className="container">
             <div className="hero-content text-center">
-              <h1>Tule Springs Real Estate</h1>
-              <p className="hero-subtitle">Search homes, get valuations, and connect with Dr. Jan Duffy</p>
+              <h1>Tule Springs Real Estate in North Las Vegas, Nevada</h1>
+              <p className="hero-subtitle">Search local homes, get valuations, and connect with Dr. Jan Duffy</p>
               <div className="hero-actions">
                 <a href="#buy" className="action-card">
                   <i className="fas fa-search" aria-hidden="true"></i>
@@ -44,7 +44,7 @@ export default function HomePage() {
           <div className="section-header">
             <span className="section-badge">For Buyers</span>
             <h2>Search Tule Springs Homes For Sale</h2>
-            <p>Browse available home listings that update frequently—availability and pricing can change quickly.</p>
+            <p>Browse available home listings in Tule Springs, North Las Vegas, and nearby ZIP 89084 areas.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -178,7 +178,7 @@ export default function HomePage() {
             <div className="col-md-8">
               <h2>Dr. Jan Duffy</h2>
               <p className="agent-title">Your Tule Springs Real Estate Expert</p>
-              <p>Serving Tule Springs and North Las Vegas since 2008. Whether you&apos;re buying your first home or selling to move up, I provide personalized service backed by Berkshire Hathaway HomeServices.</p>
+              <p>Serving Tule Springs and North Las Vegas, Nevada since 2008. Whether you&apos;re buying your first home or selling to move up, I provide personalized service backed by Berkshire Hathaway HomeServices.</p>
               <div className="agent-stats">
                 <div className="agent-stat">
                   <strong>Local</strong>

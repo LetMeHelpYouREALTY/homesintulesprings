@@ -40,7 +40,7 @@ export function getBaseMetadata(): Metadata {
       template: '%s | Homes in Tule Springs',
     },
     description:
-      'Search homes for sale in Tule Springs, North Las Vegas. Browse MLS listings, request a home valuation, and connect with Dr. Jan Duffy.',
+      'Search homes for sale in Tule Springs and North Las Vegas, Nevada. Browse local home listings, request a home valuation, and connect with Dr. Jan Duffy.',
     alternates: { canonical: '/' },
     robots: {
       index: true,
@@ -58,6 +58,8 @@ export function getBaseMetadata(): Metadata {
     category: 'Real Estate',
     other: {
       'contact:phone_number': BUSINESS.phoneDisplay,
+      'geo.region': 'US-NV',
+      'geo.placename': 'North Las Vegas',
     },
   };
 }

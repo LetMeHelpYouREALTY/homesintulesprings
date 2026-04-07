@@ -17,7 +17,7 @@ export default function TuleSpringsAmenitiesPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Homes Near Tule Springs Amenities</h2>
-            <p>Live near parks, trails, and recreation.</p>
+            <p>Live near parks, trails, and recreation in Tule Springs and North Las Vegas, Nevada.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -29,7 +29,7 @@ export default function TuleSpringsAmenitiesPage() {
         <div className="container">
           <div className="cta-content text-center">
             <h2>Live Where You Play</h2>
-            <p>Find your home near Tule Springs best amenities.</p>
+            <p>Find your home near Tule Springs&apos; best amenities, parks, and walking trails.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
               <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>

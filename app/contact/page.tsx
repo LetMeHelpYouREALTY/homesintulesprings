@@ -12,13 +12,13 @@ export default function ContactPage() {
   return (
     <>
       <BreadcrumbJsonLd path="/contact" />
-      <PageBanner title="Contact Dr. Jan Duffy" subtitle="Let's Talk About Your Real Estate Goals" />
+      <PageBanner title="Contact Dr. Jan Duffy" subtitle="Let's Talk About Your Tule Springs and North Las Vegas Goals" />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Browse Tule Springs Listings</h2>
-            <p>Home listings update frequently; confirm status and price with Dr. Duffy before visiting a property.</p>
+            <p>Home listings in Tule Springs and North Las Vegas update frequently; confirm status and price with Dr. Duffy before visiting a property.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -33,7 +33,7 @@ export default function ContactPage() {
               <div className="col-lg-5">
                 <div className="contact-info">
                   <h2>Get In Touch</h2>
-                  <p>Ready to buy or sell in Tule Springs? Have questions about the market? I&apos;m here to help!</p>
+                  <p>Ready to buy or sell in Tule Springs or North Las Vegas, Nevada? Have questions about the local market? I&apos;m here to help.</p>
                   <ul className="contact-details">
                     <li>
                       <i className="fas fa-phone" aria-hidden="true"></i>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 ),
               },
               {
-                question: 'Does Dr. Jan Duffy help buyers and sellers in Tule Springs?',
+                question: 'Does Dr. Jan Duffy help buyers and sellers in Tule Springs and North Las Vegas?',
                 answer: (
                   <p>
                     Yes. Dr. Jan Duffy assists both home buyers and sellers in Tule Springs and North Las Vegas. She offers

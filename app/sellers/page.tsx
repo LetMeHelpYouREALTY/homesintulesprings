@@ -11,13 +11,13 @@ export default function SellersPage() {
   return (
     <>
       <BreadcrumbJsonLd path="/sellers" />
-      <PageBanner title="Sell Your Tule Springs Home" subtitle="Get Top Dollar with Expert Marketing & Negotiation" />
+      <PageBanner title="Sell Your Tule Springs Home" subtitle="North Las Vegas, Nevada Seller Strategy" />
       <section className="buyer-section realscout-below-hero">
         <div className="container">
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Browse Tule Springs Listings</h2>
-            <p>Home listings update frequently; Dr. Duffy can help you interpret what&apos;s active and what&apos;s already under contract.</p>
+            <p>Home listings in Tule Springs and North Las Vegas update frequently; Dr. Duffy can help you interpret what&apos;s active and what&apos;s already under contract.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -30,7 +30,7 @@ export default function SellersPage() {
           <div className="section-header">
             <span className="section-badge seller-badge">Home Value</span>
             <h2>What&apos;s Your Home Worth?</h2>
-            <p>Get a free, no-obligation market analysis</p>
+            <p>Get a free, no-obligation market analysis for your Tule Springs or North Las Vegas home.</p>
           </div>
           <div className="realscout-widget-container">
             {/* @ts-expect-error RealScout custom element */}

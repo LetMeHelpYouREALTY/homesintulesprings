@@ -18,7 +18,7 @@ export default function AboutPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Browse Tule Springs Listings</h2>
-            <p>Home listings update frequently-use search as a starting point, then confirm next steps with Dr. Duffy.</p>
+            <p>Home listings in Tule Springs and North Las Vegas update frequently. Use search as a starting point, then confirm next steps with Dr. Duffy.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -40,7 +40,7 @@ export default function AboutPage() {
             <div className="col-lg-7">
               <h2>Meet Dr. Jan Duffy</h2>
               <p className="agent-title">REALTOR® | Berkshire Hathaway HomeServices Nevada Properties</p>
-              <p>With years of experience in the Las Vegas real estate market, Dr. Jan Duffy serves buyers and sellers in Tule Springs and North Las Vegas with local insight and hands-on guidance.</p>
+              <p>With years of experience in the Las Vegas Valley market, Dr. Jan Duffy serves buyers and sellers in Tule Springs and North Las Vegas, Nevada with local insight and hands-on guidance.</p>
               <p>As a resident of the Tule Springs area, Dr. Duffy offers unparalleled insider knowledge of the community&apos;s <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, <Link href="/tule-springs-amenities">amenities</Link>, and lifestyle. Her clients benefit from her deep understanding of local market trends, neighborhood developments, and property values.</p>
               <p>Backed by the trusted Berkshire Hathaway HomeServices brand and a global network of 50,000+ agents, Dr. Duffy provides world-class marketing, expert negotiation, and personalized service tailored to each client&apos;s unique needs.</p>
               <h3 style={{ marginTop: '30px' }}>Credentials & Affiliations</h3>
@@ -66,7 +66,7 @@ export default function AboutPage() {
               <div className="feature-box">
                 <div className="feature-icon"><i className="fas fa-home"></i></div>
                 <h3>Local Expert</h3>
-                <p>Lives in Tule Springs and knows every village, school, and neighborhood inside out.</p>
+              <p>Lives in Tule Springs and knows local villages, schools, and neighborhoods inside and out.</p>
               </div>
             </div>
             <div className="col-md-4">
