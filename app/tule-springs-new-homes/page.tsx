@@ -3,7 +3,7 @@ import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export const metadata = routeMetadata('/tule-springs-new-homes');
 
@@ -19,9 +19,6 @@ export default function TuleSpringsNewHomesPage() {
             <h2>New & Recent Listings in Tule Springs</h2>
             <p>Browse new construction and recently listed homes.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
-          </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />

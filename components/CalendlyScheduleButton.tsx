@@ -2,6 +2,7 @@
 
 import type { ReactNode } from 'react';
 import { CALENDLY_EVENT_URL } from '@/lib/calendly';
+import { ensureCalendlyAssets } from '@/lib/calendly-loader';
 
 type CalendlyScheduleButtonProps = {
   className?: string;
@@ -19,9 +20,20 @@ export function CalendlyScheduleButton({
     <a
       href="#schedule"
       className={className}
-      onClick={(e) => {
+      onClick={async (e) => {
         e.preventDefault();
-        if (typeof window !== 'undefined' && window.Calendly?.initPopupWidget) {
+        if (typeof window === 'undefined') return;
+
+        if (!window.Calendly?.initPopupWidget) {
+          try {
+            await ensureCalendlyAssets();
+          } catch {
+            window.location.href = `${CALENDLY_EVENT_URL}`;
+            return;
+          }
+        }
+
+        if (window.Calendly?.initPopupWidget) {
           window.Calendly.initPopupWidget({ url: CALENDLY_EVENT_URL });
         } else {
           window.location.href = `${CALENDLY_EVENT_URL}`;

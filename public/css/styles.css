@@ -1219,11 +1219,6 @@ button.faq-question {
     margin-top: 30px;
 }
 
-.mls-disclaimer {
-    font-size: 0.95rem !important;
-    margin-bottom: 1rem;
-}
-
 /* Footer */
 .footer {
     background-color: var(--primary);
@@ -2416,13 +2411,14 @@ button.faq-question {
 
 /* Animation for engagement */
 @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% { transform: translateZ(0) scale(1); opacity: 1; }
+    50% { transform: translateZ(0) scale(1.04); opacity: 0.92; }
+    100% { transform: translateZ(0) scale(1); opacity: 1; }
 }
 
 .pulse-animation {
     animation: pulse 2s infinite;
+    will-change: transform, opacity;
 }
 
 /* Active nav state */

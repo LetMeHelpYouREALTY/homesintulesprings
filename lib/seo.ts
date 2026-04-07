@@ -31,6 +31,8 @@ export function createPageMetadata({ title, description, path }: PageMetadataInp
 }
 
 export function getBaseMetadata(): Metadata {
+  const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
   return {
     metadataBase: new URL(SITE_URL),
     title: {
@@ -48,6 +50,11 @@ export function getBaseMetadata(): Metadata {
         follow: true,
       },
     },
+    verification: googleSiteVerification
+      ? {
+          google: googleSiteVerification,
+        }
+      : undefined,
     category: 'Real Estate',
     other: {
       'contact:phone_number': BUSINESS.phoneDisplay,

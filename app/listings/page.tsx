@@ -4,7 +4,7 @@ import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export const metadata = routeMetadata('/listings');
 
@@ -14,19 +14,16 @@ export default function ListingsPage() {
       <BreadcrumbJsonLd path="/listings" />
       <PageBanner
         title="Homes for Sale"
-        subtitle="Live MLS Listings in Tule Springs & North Las Vegas"
+        subtitle="Latest Home Listings in Tule Springs & North Las Vegas"
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Listings' }]}
       />
       <section className="buyer-section listings-intro">
         <div className="container">
           <div className="section-header">
-            <span className="section-badge">MLS Listings</span>
+            <span className="section-badge">Homes for Sale</span>
             <h2>Search Tule Springs & North Las Vegas Listings</h2>
-            <p>Browse MLS listings and filter by price, beds, baths, and more—availability can change, so verify details with Dr. Duffy.</p>
+            <p>Browse home listings and filter by price, beds, baths, and more—availability can change, so verify details with Dr. Duffy.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
-          </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { CALENDLY_INLINE_URL } from '@/lib/calendly';
+import { ensureCalendlyAssets } from '@/lib/calendly-loader';
 
 type CalendlyInlineProps = {
   className?: string;
@@ -20,31 +21,24 @@ export function CalendlyInline({ className, minHeight = 700 }: CalendlyInlinePro
     if (!parent) return;
 
     let cancelled = false;
-    let interval: ReturnType<typeof setInterval> | undefined;
-
-    const mount = () => {
-      if (cancelled || !parent) return false;
-      if (!window.Calendly?.initInlineWidget) return false;
+    const mount = async () => {
+      try {
+        await ensureCalendlyAssets();
+      } catch {
+        return;
+      }
+      if (cancelled || !parent || !window.Calendly?.initInlineWidget) return;
       parent.innerHTML = '';
       window.Calendly.initInlineWidget({
         url: CALENDLY_INLINE_URL,
         parentElement: parent,
       });
-      return true;
     };
 
-    if (mount()) return () => { cancelled = true; };
-
-    interval = setInterval(() => {
-      if (mount() && interval) {
-        clearInterval(interval);
-        interval = undefined;
-      }
-    }, 100);
+    void mount();
 
     return () => {
       cancelled = true;
-      if (interval) clearInterval(interval);
     };
   }, []);
 

@@ -7,7 +7,9 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CloudflareAnalytics } from '@/components/CloudflareAnalytics';
 import { CalendlyBadge } from '@/components/CalendlyBadge';
+import { CalendlyAssetsLoader } from '@/components/CalendlyAssetsLoader';
 import { CalendlyScheduleSection } from '@/components/CalendlyScheduleSection';
+import { RealScoutScriptLoader } from '@/components/RealScoutScriptLoader';
 import { getBaseMetadata, getOrgGraph } from '@/lib/seo';
 
 const openSans = Open_Sans({
@@ -46,7 +48,6 @@ export default function RootLayout({
         />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgGraph) }}
@@ -58,9 +59,9 @@ export default function RootLayout({
         </a>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-WT2PRE8Q93"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -68,14 +69,8 @@ export default function RootLayout({
             gtag('config', 'G-WT2PRE8Q93');
           `}
         </Script>
-        <Script
-          src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          strategy="afterInteractive"
-        />
+        <CalendlyAssetsLoader />
+        <RealScoutScriptLoader />
         <div id="main-wrapper">
           <Header />
           <main id="main-content">
@@ -85,12 +80,6 @@ export default function RootLayout({
           <Footer />
         </div>
         <CalendlyBadge />
-        <Script
-          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <SpeedInsights />
         <Analytics />
         <CloudflareAnalytics />

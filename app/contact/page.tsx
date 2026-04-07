@@ -4,7 +4,7 @@ import { FaqAccordion } from '@/components/FaqAccordion';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS, SOCIAL_URLS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export const metadata = routeMetadata('/contact');
 
@@ -18,11 +18,8 @@ export default function ContactPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Browse Tule Springs Listings</h2>
-            <p>MLS listings update frequently; confirm status and price with Dr. Duffy before visiting a property.</p>
+            <p>Home listings update frequently; confirm status and price with Dr. Duffy before visiting a property.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
-          </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
@@ -167,7 +164,7 @@ export default function ContactPage() {
                 answer: (
                   <p>
                     Yes. Dr. Jan Duffy assists both home buyers and sellers in Tule Springs and North Las Vegas. She offers
-                    home valuations for sellers and full buyer representation including MLS search and showings.
+                    home valuations for sellers and full buyer representation including home search and showings.
                   </p>
                 ),
               },

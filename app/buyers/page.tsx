@@ -3,7 +3,7 @@ import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export const metadata = routeMetadata('/buyers');
 
@@ -17,11 +17,8 @@ export default function BuyersPage() {
           <div className="section-header">
             <span className="section-badge">For Sale Now</span>
             <h2>Search Available Homes</h2>
-            <p>Browse real-time MLS listings in Tule Springs and surrounding areas</p>
+            <p>Browse home listings in Tule Springs and surrounding areas</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
-          </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />

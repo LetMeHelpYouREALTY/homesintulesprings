@@ -3,7 +3,7 @@ import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export const metadata = routeMetadata('/why-tule-springs');
 
@@ -17,9 +17,8 @@ export default function WhyTuleSpringsPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Find Your Home in Tule Springs</h2>
-            <p>Live MLS listings in one of North Las Vegas best communities.</p>
+            <p>See the latest home listings in one of North Las Vegas&apos; best communities.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />

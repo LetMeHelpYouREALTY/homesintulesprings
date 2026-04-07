@@ -2,14 +2,13 @@
 
 import { useEffect, useRef } from 'react';
 import { CALENDLY_EVENT_URL } from '@/lib/calendly';
+import { ensureCalendlyAssets } from '@/lib/calendly-loader';
 
 /** Floating Calendly badge — mount once in root layout. */
 export function CalendlyBadge() {
   const didInit = useRef(false);
 
   useEffect(() => {
-    let interval: ReturnType<typeof setInterval> | undefined;
-
     const init = () => {
       if (typeof window === 'undefined' || !window.Calendly?.initBadgeWidget || didInit.current) return;
       didInit.current = true;
@@ -22,20 +21,24 @@ export function CalendlyBadge() {
       });
     };
 
-    if (window.Calendly) {
-      init();
-      return;
-    }
-
-    interval = setInterval(() => {
-      if (window.Calendly) {
-        if (interval) clearInterval(interval);
-        init();
+    const start = async () => {
+      try {
+        await ensureCalendlyAssets();
+      } catch {
+        return;
       }
-    }, 50);
+      init();
+    };
+
+    const onIntent = () => void start();
+    window.addEventListener('pointerdown', onIntent, { once: true, passive: true });
+    window.addEventListener('keydown', onIntent, { once: true });
+    window.addEventListener('scroll', onIntent, { once: true, passive: true });
 
     return () => {
-      if (interval) clearInterval(interval);
+      window.removeEventListener('pointerdown', onIntent);
+      window.removeEventListener('keydown', onIntent);
+      window.removeEventListener('scroll', onIntent);
     };
   }, []);
 

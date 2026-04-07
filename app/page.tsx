@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BUSINESS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 import { routeMetadata } from '@/lib/page-seo';
 
 export const metadata = routeMetadata('');
@@ -43,9 +43,8 @@ export default function HomePage() {
           <div className="section-header">
             <span className="section-badge">For Buyers</span>
             <h2>Search Tule Springs Homes For Sale</h2>
-            <p>Browse MLS listings that update frequently—availability and pricing can change quickly.</p>
+            <p>Browse available home listings that update frequently—availability and pricing can change quickly.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}><strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}</p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />

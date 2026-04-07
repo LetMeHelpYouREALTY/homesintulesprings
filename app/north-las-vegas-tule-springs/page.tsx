@@ -3,7 +3,7 @@ import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
-import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
 export const metadata = routeMetadata('/north-las-vegas-tule-springs');
 
@@ -17,11 +17,8 @@ export default function NorthLasVegasTuleSpringsPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>North Las Vegas & Tule Springs Listings</h2>
-            <p>Live MLS listings in the area.</p>
+            <p>See the latest home listings in the area.</p>
           </div>
-          <p className="mls-disclaimer text-muted small" style={{ marginBottom: '1rem' }}>
-            <strong>Listing disclaimer:</strong> {LISTING_DISCLAIMER}
-          </p>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />

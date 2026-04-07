@@ -1,5 +1,18 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { BUSINESS } from '@/lib/site-contact';
+
+export const metadata: Metadata = {
+  title: 'Page Not Found',
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default function NotFound() {
   return (

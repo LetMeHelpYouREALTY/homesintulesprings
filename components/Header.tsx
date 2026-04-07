@@ -9,7 +9,13 @@ export function Header() {
           <div className="col-md-3 header-left">
             <div className="logo">
               <Link href="/">
-                <img src="/images/logo.svg" alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices" className="img-fluid" />
+                <img
+                  src="/images/logo.svg"
+                  alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices"
+                  className="img-fluid"
+                  width={260}
+                  height={64}
+                />
               </Link>
             </div>
             <div className="header-phone">

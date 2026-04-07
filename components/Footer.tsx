@@ -8,7 +8,14 @@ export function Footer() {
         <div className="row">
           <div className="col-md-4">
             <div className="footer-logo">
-              <img src="/images/logo-white.svg" alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices" className="img-fluid" loading="lazy" />
+              <img
+                src="/images/logo-white.svg"
+                alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices"
+                className="img-fluid"
+                loading="lazy"
+                width={220}
+                height={60}
+              />
             </div>
             <div className="footer-contact">
               <p><i className="fas fa-map-marker-alt" aria-hidden="true"></i> {BUSINESS.officeAddress.streetAddress}, {BUSINESS.officeAddress.city}, {BUSINESS.officeAddress.region} {BUSINESS.officeAddress.postalCode}</p>
@@ -75,8 +82,12 @@ export function Footer() {
               <div className="footer-legal">
                 <p>Dr. Jan Duffy | License {BUSINESS.license} | {BUSINESS.legalName}</p>
                 <div className="realtor-logos">
-                  <span className="equal-housing"><img src="/images/equal-housing.svg" alt="Equal Housing Opportunity" loading="lazy" /></span>
-                  <span className="realtor-logo"><img src="/images/realtor-logo.svg" alt="Realtor" loading="lazy" /></span>
+                  <span className="equal-housing">
+                    <img src="/images/equal-housing.svg" alt="Equal Housing Opportunity" loading="lazy" width={60} height={30} />
+                  </span>
+                  <span className="realtor-logo">
+                    <img src="/images/realtor-logo.svg" alt="Realtor" loading="lazy" width={60} height={30} />
+                  </span>
                 </div>
               </div>
             </div>
