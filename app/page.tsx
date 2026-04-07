@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 
@@ -174,7 +174,7 @@ export default function HomePage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-4 text-center">
-              <img src="/images/dr-jan-duffy.jpg" alt="Dr. Jan Duffy, REALTOR®" className="agent-photo" />
+              <img src="/images/agents/design 04_new 2.jpg" alt="Dr. Jan Duffy, REALTOR® headshot" className="agent-photo" />
             </div>
             <div className="col-md-8">
               <h2>Dr. Jan Duffy</h2>
@@ -210,7 +210,7 @@ export default function HomePage() {
             <p>Whether buying or selling, I&apos;m here to help you every step of the way.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
-              <Link href="/contact" className="btn btn-outline-light btn-lg"><i className="fas fa-envelope"></i> Send Message</Link>
+              <CalendlyScheduleButton className="btn btn-outline-light btn-lg"><i className="fas fa-calendar-alt"></i> Schedule time with me</CalendlyScheduleButton>
             </div>
           </div>
         </div>

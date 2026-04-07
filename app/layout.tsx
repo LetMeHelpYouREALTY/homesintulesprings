@@ -5,6 +5,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CloudflareAnalytics } from '@/components/CloudflareAnalytics';
+import { CalendlyBadge } from '@/components/CalendlyBadge';
+import { CalendlyScheduleSection } from '@/components/CalendlyScheduleSection';
 import { getBaseMetadata, getOrgGraph } from '@/lib/seo';
 
 export const metadata: Metadata = getBaseMetadata();
@@ -37,6 +39,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Noto+Serif:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgGraph) }}
@@ -59,11 +62,17 @@ export default function RootLayout({
           src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
           strategy="afterInteractive"
         />
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
         <div id="main-wrapper">
           <Header />
           {children}
+          <CalendlyScheduleSection />
           <Footer />
         </div>
+        <CalendlyBadge />
         <Script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

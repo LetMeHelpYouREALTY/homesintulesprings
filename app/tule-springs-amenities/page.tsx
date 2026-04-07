@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { createPageMetadata } from '@/lib/seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
@@ -38,7 +38,7 @@ export default function TuleSpringsAmenitiesPage() {
             <p>Find your home near Tule Springs best amenities.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
-              <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
+              <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>
             </div>
           </div>
         </div>

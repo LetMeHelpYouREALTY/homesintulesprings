@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { createPageMetadata } from '@/lib/seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
@@ -33,7 +34,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 text-center">
-              <img src="/images/dr-jan-duffy.jpg" alt="Dr. Jan Duffy, REALTOR®" className="agent-photo" style={{ width: '300px', height: '300px' }} />
+              <img src="/images/agents/zillowDr Jan new.jpg" alt="Dr. Jan Duffy, REALTOR® professional headshot" className="agent-photo" style={{ width: '300px', height: '300px' }} />
               <div className="agent-stats" style={{ justifyContent: 'center', marginTop: '30px' }}>
                 <div className="agent-stat"><strong>Local</strong><span>Tule Springs Focus</span></div>
                 <div className="agent-stat"><strong>17+</strong><span>Years</span></div>
@@ -96,7 +97,7 @@ export default function AboutPage() {
             <p>Whether buying or selling, Dr. Jan Duffy is here to help</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
-              <Link href="/contact" className="btn btn-outline-light btn-lg">Send Message</Link>
+              <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>
             </div>
           </div>
         </div>

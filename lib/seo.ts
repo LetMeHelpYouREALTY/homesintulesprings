@@ -63,7 +63,7 @@ export function getOrgGraph() {
         '@type': 'RealEstateAgent',
         '@id': BUSINESS_IDS.agent,
         name: BUSINESS.name,
-        image: `${SITE_URL}/images/dr-jan-duffy.jpg`,
+        image: `${SITE_URL}/images/agents/zillowDr Jan new.jpg`,
         url: SITE_URL,
         telephone: BUSINESS.phoneE164,
         email: BUSINESS.email,

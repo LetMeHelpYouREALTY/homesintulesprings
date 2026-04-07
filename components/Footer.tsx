@@ -24,6 +24,7 @@ export function Footer() {
               <li><Link href="/sellers">Sell Your Home</Link></li>
               <li><Link href="/tule-springs">Tule Springs</Link></li>
               <li><Link href="/about">About Dr. Duffy</Link></li>
+              <li><a href="#schedule">Schedule a call</a></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>

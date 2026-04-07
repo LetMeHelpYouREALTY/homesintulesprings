@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageBanner } from '@/components/PageBanner';
+import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { createPageMetadata } from '@/lib/seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { LISTING_DISCLAIMER, REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
@@ -34,7 +35,8 @@ export default function ListingsPage() {
             <realscout-office-listings {...REALSCOUT_LISTING_PROPS} />
           </div>
           <p className="mt-4">
-            Narrow your search: <Link href="/tule-springs-homes-for-sale">Tule Springs homes for sale</Link>, <Link href="/tule-springs-new-homes">new homes</Link>, <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, and <Link href="/tule-springs-amenities">amenities</Link>. Ready to buy? <Link href="/contact">Contact Dr. Jan Duffy</Link> at <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phoneDisplay}</a>.
+            Narrow your search: <Link href="/tule-springs-homes-for-sale">Tule Springs homes for sale</Link>, <Link href="/tule-springs-new-homes">new homes</Link>, <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, and <Link href="/tule-springs-amenities">amenities</Link>. Ready to buy?{' '}
+            <CalendlyScheduleButton className="link-primary link-underline">Schedule with Dr. Jan Duffy</CalendlyScheduleButton> or call <a href={`tel:${BUSINESS.phoneE164}`}>{BUSINESS.phoneDisplay}</a>.
           </p>
         </div>
       </section>
@@ -45,7 +47,7 @@ export default function ListingsPage() {
             <p>Dr. Jan Duffy will help you find the right home in Tule Springs or North Las Vegas.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
-              <Link href="/contact" className="btn btn-outline-light btn-lg">Contact Dr. Duffy</Link>
+              <CalendlyScheduleButton className="btn btn-outline-light btn-lg">Schedule time with me</CalendlyScheduleButton>
             </div>
           </div>
         </div>
