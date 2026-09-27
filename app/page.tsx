@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
 import { OpenHousesMapSection } from '@/components/OpenHousesMapSection';
+import { NearbyAmenitiesSection } from '@/components/amenities/NearbyAmenitiesSection';
 import { BUSINESS } from '@/lib/site-contact';
 import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 import { routeMetadata } from '@/lib/page-seo';
@@ -158,6 +159,8 @@ export default function HomePage() {
           </p>
         </div>
       </section>
+
+      <NearbyAmenitiesSection />
 
       <OpenHousesMapSection />
 

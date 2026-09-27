@@ -4,6 +4,7 @@ import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import Link from 'next/link';
 
 export const metadata = routeMetadata('/tule-springs-amenities');
 
@@ -17,7 +18,10 @@ export default function TuleSpringsAmenitiesPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Homes Near Tule Springs Amenities</h2>
-            <p>Live near parks, trails, and recreation in Tule Springs and North Las Vegas, Nevada.</p>
+            <p>
+              Live near parks, trails, and recreation in Tule Springs and North Las Vegas, Nevada. For an interactive map and
+              local guide, see <Link href="/amenities">nearby amenities in Tule Springs</Link>.
+            </p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}

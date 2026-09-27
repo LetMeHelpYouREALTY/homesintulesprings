@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { NearbyAmenitiesSection } from '@/components/amenities/NearbyAmenitiesSection';
 
 export const metadata = routeMetadata('/tule-springs');
 
@@ -27,6 +28,7 @@ export default function TuleSpringsPage() {
           <p className="mt-4">Explore <Link href="/tule-springs-villages">Tule Springs villages</Link>, <Link href="/tule-springs-schools">schools near Tule Springs</Link>, <Link href="/tule-springs-amenities">parks and amenities in Tule Springs</Link>, <Link href="/why-tule-springs">why buyers choose Tule Springs</Link>, and <Link href="/tule-springs-new-homes">new homes in North Las Vegas</Link>.</p>
         </div>
       </section>
+      <NearbyAmenitiesSection heading="What's Near Tule Springs" />
       <section className="cta-section">
         <div className="container">
           <div className="cta-content text-center">

@@ -49,6 +49,11 @@ export const BREADCRUMB_TRAILS: Record<Exclude<MarketingPath, ''>, BreadcrumbIte
     TULE_HUB,
     { name: 'Amenities', path: '/tule-springs-amenities' },
   ],
+  '/amenities': [
+    { name: 'Home', path: '/' },
+    TULE_HUB,
+    { name: 'Nearby Amenities', path: '/amenities' },
+  ],
   '/why-tule-springs': [
     { name: 'Home', path: '/' },
     TULE_HUB,

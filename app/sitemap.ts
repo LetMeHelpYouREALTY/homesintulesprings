@@ -18,6 +18,7 @@ const LAST_MODIFIED_ISO: Record<string, string> = {
   '/tule-springs-villages': '2026-04-03T12:00:00.000Z',
   '/tule-springs-schools': '2026-04-03T12:00:00.000Z',
   '/tule-springs-amenities': '2026-04-03T12:00:00.000Z',
+  '/amenities': '2026-09-27T12:00:00.000Z',
   '/why-tule-springs': '2026-04-02T12:00:00.000Z',
   '/tule-springs-real-estate': '2026-04-04T12:00:00.000Z',
   '/tule-springs-neighborhoods': '2026-04-03T12:00:00.000Z',

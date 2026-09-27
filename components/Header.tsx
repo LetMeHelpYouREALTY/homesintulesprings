@@ -36,6 +36,7 @@ export function Header() {
                     <li><Link href="/tule-springs-villages">Villages</Link></li>
                     <li><Link href="/tule-springs-schools">Schools</Link></li>
                     <li><Link href="/tule-springs-amenities">Amenities</Link></li>
+                    <li><Link href="/amenities">Nearby Map</Link></li>
                     <li><Link href="/why-tule-springs">Why Live Here</Link></li>
                     <li><Link href="/tule-springs-real-estate">Real Estate</Link></li>
                     <li><Link href="/tule-springs-neighborhoods">Neighborhoods</Link></li>
