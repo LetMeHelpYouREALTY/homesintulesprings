@@ -52,46 +52,44 @@ export default function AmenitiesPage() {
           <h2 id="dining-near-tule-springs">Dining &amp; coffee near Tule Springs</h2>
           <p>
             Aliante Casino + Hotel on Aliante Parkway bundles multiple restaurants and casual dining under one roof—handy for
-            guests and locals. Craig Road corridors toward Centennial Hills add familiar chains and independents; many
-            families pair a grocery stop at Smith&apos;s or Walmart on West Craig Road with dinner nearby.
+            guests and residents. Craig Road corridors toward Centennial Hills add familiar chains and independents; many
+            households pair a grocery stop at Smith&apos;s (3013 W Craig Rd) or Walmart (1807 W Craig Rd) with dinner nearby.
           </p>
 
           <h2 id="parks-recreation">Parks &amp; recreation</h2>
           <p>
             Aliante Nature Discovery Park on Nature Park Drive is a neighborhood anchor with play areas and walking paths.
-            Craig Ranch Regional Park on West Craig Road offers sports fields, splash features, and event space. Tule Springs
-            Regional Park and the adjacent fossil beds preserve open desert scenery; Eglington Preserve adds trail access
-            along the edge of Tule Springs villages.
+            Craig Ranch Regional Park on West Craig Road offers sports fields, splash features, and event space (about 170
+            acres). Tule Springs Fossil Beds National Monument preserves open desert scenery northwest of the Aliante area.
           </p>
 
           <h2 id="golf-nearby">Golf</h2>
           <p>
-            Angel Park Golf Club on South Rampart Boulevard is a well-known public course northwest of the Strip, within an
-            easy drive from North Las Vegas master-planned communities.
+            Angel Park Golf Club on South Rampart Boulevard (100 S Rampart Blvd) is a public course northwest of the Strip,
+            within an easy drive from North Las Vegas master-planned communities.
           </p>
 
           <h2 id="healthcare-nearby">Healthcare</h2>
           <p>
             Centennial Hills Hospital Medical Center on North Durango Drive and MountainView Hospital on North Tenaya Way
-            provide emergency and specialty care a short drive from Tule Springs. Pharmacies such as CVS on North Durango
-            Drive support routine prescriptions.
+            (3100 N Tenaya Way) provide emergency and specialty care a short drive from Tule Springs.
           </p>
 
           <h2 id="shopping-grocery">Shopping &amp; grocery</h2>
           <p>
-            Day-to-day shopping clusters along Craig Road and Aliante Parkway: Smith&apos;s Food and Drug (7450 W Craig Rd),
-            Walmart Supercenter (1807 W Craig Rd), and retail at Aliante Casino + Hotel (7300 Aliante Pkwy).
+            Day-to-day shopping clusters along Craig Road and Aliante Parkway: Smith&apos;s Food and Drug (3013 W Craig Rd),
+            Walmart Supercenter (1807 W Craig Rd), and retail at Aliante Casino + Hotel + Spa (7300 N Aliante Pkwy).
           </p>
 
           <h2 id="schools-serving">Schools serving Tule Springs</h2>
           <p>
-            Tule Springs sits in the Clark County School District. CCSD campuses frequently referenced for the area include
-            Zel &amp; Mary Lowman Elementary, Centennial High School, and Legacy High School. School boundaries change—confirm
-            current zoning on{' '}
-            <a href="https://www.ccsd.net/" target="_blank" rel="noopener noreferrer">
-              ccsd.net
+            Tule Springs sits in the Clark County School District. Which CCSD schools are assigned to Tule Springs addresses?
+            Verify with the{' '}
+            <a href="https://www.ccsd.net/zoning" target="_blank" rel="noopener noreferrer">
+              CCSD Zoning Search
             </a>{' '}
-            before you write an offer.
+            before you write an offer—nearby campuses such as Legacy High School and Centennial High School are not guaranteed
+            for every parcel.
           </p>
 
           <h2 id="commute-times">Commute &amp; regional access (approximate)</h2>

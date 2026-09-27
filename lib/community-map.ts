@@ -15,7 +15,7 @@ export const TULE_SPRINGS_COMMUNITY = {
   centerLabel: 'Tule Springs & Aliante area',
   coordinateSource:
     'OpenStreetMap geocode of 2627 Nature Park Dr, North Las Vegas, NV 89084 (site office NAP)',
-  searchRadiusMeters: 8000,
+  searchRadiusMeters: 5000,
 } as const;
 
 export type AmenityCategoryId =
@@ -39,7 +39,7 @@ export type AmenityCategory = {
   ariaLabel: string;
 };
 
-/** Family-oriented master-planned community — parks and daily needs first; schools included. */
+/** Tule Springs / Aliante area — parks and daily needs first; schools use CCSD zoning lookup. */
 export const AMENITY_CATEGORIES: AmenityCategory[] = [
   {
     id: 'parks',
@@ -120,7 +120,7 @@ export function getCategoryById(id: AmenityCategoryId): AmenityCategory {
 }
 
 export function buildEmbedMapUrl(lat: number, lng: number): string {
-  return `https://www.google.com/maps?q=${lat},${lng}&z=13&output=embed`;
+  return `https://www.google.com/maps?q=${lat},${lng}&z=14&output=embed`;
 }
 
 export function buildDirectionsUrl(lat: number, lng: number, label?: string): string {

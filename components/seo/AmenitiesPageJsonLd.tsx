@@ -30,22 +30,28 @@ export function AmenitiesPageJsonLd() {
   const itemList = {
     '@type': 'ItemList',
     name: `Featured places near ${TULE_SPRINGS_COMMUNITY.name}`,
-    itemListElement: CURATED_NEARBY_PLACES.map((place, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': place.schemaType,
-        name: place.name,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: place.streetAddress,
-          addressLocality: place.city,
-          addressRegion: place.region,
-          postalCode: place.postalCode,
-          addressCountry: 'US',
+    itemListElement: CURATED_NEARBY_PLACES.map((place, index) => {
+      const address: Record<string, string> = {
+        '@type': 'PostalAddress',
+        addressLocality: place.city,
+        addressRegion: place.region,
+        postalCode: place.postalCode,
+        addressCountry: 'US',
+      };
+      if (place.streetAddress) {
+        address.streetAddress = place.streetAddress;
+      }
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': place.schemaType,
+          name: place.name,
+          url: place.sourceUrl,
+          address,
         },
-      },
-    })),
+      };
+    }),
   };
 
   const faqPage = {

@@ -6,7 +6,9 @@ export type CuratedPlace = {
   category: AmenityCategoryId;
   /** schema.org @type for ItemList entries */
   schemaType: string;
-  streetAddress: string;
+  /** Official page used to verify name and mailing address */
+  sourceUrl: string;
+  streetAddress?: string;
   city: string;
   region: string;
   postalCode: string;
@@ -16,83 +18,70 @@ export type CuratedPlace = {
 /** Verified names and mailing addresses for fallback list + JSON-LD (no invented ratings or drive times). */
 export const CURATED_NEARBY_PLACES: CuratedPlace[] = [
   {
-    id: 'tule-springs-regional-park',
-    name: 'Tule Springs Regional Park',
-    category: 'parks',
-    schemaType: 'Park',
-    streetAddress: '8650 N Fort Apache Rd',
-    city: 'Las Vegas',
-    region: 'NV',
-    postalCode: '89149',
-    note: 'Clark County regional park on the edge of the Tule Springs Fossil Beds area.',
-  },
-  {
     id: 'aliante-nature-discovery-park',
     name: 'Aliante Nature Discovery Park',
     category: 'parks',
     schemaType: 'Park',
+    sourceUrl:
+      'https://www.cityofnorthlasvegas.com/Home/Components/FacilityDirectory/FacilityDirectory/73/777',
     streetAddress: '2627 Nature Park Dr',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89084',
+    note: 'City of North Las Vegas park (about 20 acres).',
   },
   {
     id: 'craig-ranch-regional-park',
     name: 'Craig Ranch Regional Park',
     category: 'parks',
     schemaType: 'Park',
+    sourceUrl: 'https://www.cityofnorthlasvegas.com/things-to-do/parks-and-recreation/parks/craig-ranch-regional-park',
     streetAddress: '628 W Craig Rd',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89032',
-  },
-  {
-    id: 'eglington-preserve',
-    name: 'Eglington Preserve',
-    category: 'parks',
-    schemaType: 'Park',
-    streetAddress: 'Eglington Preserve',
-    city: 'North Las Vegas',
-    region: 'NV',
-    postalCode: '89084',
-    note: 'Open desert preserve adjacent to Tule Springs villages (trail access varies by entry point).',
+    note: 'City of North Las Vegas regional park (about 170 acres).',
   },
   {
     id: 'smiths-craig',
     name: "Smith's Food and Drug",
     category: 'grocery',
     schemaType: 'GroceryStore',
-    streetAddress: '7450 W Craig Rd',
-    city: 'Las Vegas',
+    sourceUrl: 'https://www.smithsfoodanddrug.com/stores/grocery/nv/north-las-vegas/shadowcreek/706/00334',
+    streetAddress: '3013 W Craig Rd',
+    city: 'North Las Vegas',
     region: 'NV',
-    postalCode: '89129',
+    postalCode: '89032',
   },
   {
     id: 'walmart-craig',
     name: 'Walmart Supercenter',
     category: 'grocery',
     schemaType: 'GroceryStore',
+    sourceUrl: 'https://www.walmart.com/store/2592-north-las-vegas-nv',
     streetAddress: '1807 W Craig Rd',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89032',
   },
   {
-    id: 'aliante-casino',
-    name: 'Aliante Casino + Hotel',
+    id: 'aliante-casino-dining',
+    name: 'Aliante Casino + Hotel + Spa',
     category: 'restaurants',
     schemaType: 'Restaurant',
-    streetAddress: '7300 Aliante Pkwy',
+    sourceUrl: 'https://aliante.boydgaming.com/',
+    streetAddress: '7300 N Aliante Pkwy',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89084',
-    note: 'Dining, entertainment, and hotel on Aliante Parkway.',
+    note: 'Multiple on-property dining venues.',
   },
   {
     id: 'centennial-hills-hospital',
     name: 'Centennial Hills Hospital Medical Center',
     category: 'healthcare',
     schemaType: 'Hospital',
+    sourceUrl: 'https://www.centennialhillshospital.com/about/contact-us',
     streetAddress: '6900 N Durango Dr',
     city: 'Las Vegas',
     region: 'NV',
@@ -103,27 +92,31 @@ export const CURATED_NEARBY_PLACES: CuratedPlace[] = [
     name: 'MountainView Hospital',
     category: 'healthcare',
     schemaType: 'Hospital',
-    streetAddress: '3110 N Tenaya Way',
+    sourceUrl: 'https://www.sunrisehealthinfo.com/locations/mountainview-hospital/about-us/contact-us',
+    streetAddress: '3100 N Tenaya Way',
     city: 'Las Vegas',
     region: 'NV',
     postalCode: '89128',
   },
   {
-    id: 'lifetime-aliante',
-    name: 'Life Time',
+    id: 'aliante-fitness',
+    name: 'Aliante Fitness Center',
     category: 'fitness',
     schemaType: 'ExerciseGym',
-    streetAddress: '7300 Aliante Pkwy',
+    sourceUrl: 'https://aliante.boydgaming.com/',
+    streetAddress: '7300 N Aliante Pkwy',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89084',
+    note: 'Fitness center at Aliante Casino + Hotel + Spa.',
   },
   {
     id: 'aliante-station-shopping',
-    name: 'Aliante Casino + Hotel (retail & dining)',
+    name: 'Aliante Casino + Hotel + Spa (retail & dining)',
     category: 'shopping',
     schemaType: 'ShoppingCenter',
-    streetAddress: '7300 Aliante Pkwy',
+    sourceUrl: 'https://aliante.boydgaming.com/',
+    streetAddress: '7300 N Aliante Pkwy',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89084',
@@ -133,58 +126,43 @@ export const CURATED_NEARBY_PLACES: CuratedPlace[] = [
     name: 'Centennial High School',
     category: 'schools',
     schemaType: 'School',
+    sourceUrl: 'https://www.centennialhighschool.org/apps/contact/',
     streetAddress: '10200 Centennial Pkwy',
     city: 'Las Vegas',
     region: 'NV',
     postalCode: '89149',
-    note: 'Clark County School District (CCSD).',
+    note: 'Clark County School District (CCSD). Verify assignment with CCSD Zoning Search.',
   },
   {
     id: 'legacy-high',
     name: 'Legacy High School',
     category: 'schools',
     schemaType: 'School',
+    sourceUrl: 'https://www.legacyhigh.net/apps/contact/',
     streetAddress: '150 W Deer Springs Way',
     city: 'North Las Vegas',
     region: 'NV',
     postalCode: '89084',
-    note: 'Clark County School District (CCSD).',
-  },
-  {
-    id: 'lowman-elementary',
-    name: 'Zel & Mary Lowman Elementary School',
-    category: 'schools',
-    schemaType: 'School',
-    streetAddress: '7000 Lowman Ln',
-    city: 'Las Vegas',
-    region: 'NV',
-    postalCode: '89149',
-    note: 'Clark County School District (CCSD).',
+    note: 'Clark County School District (CCSD). Verify assignment with CCSD Zoning Search.',
   },
   {
     id: 'angel-park-golf',
     name: 'Angel Park Golf Club',
     category: 'golf',
     schemaType: 'GolfCourse',
-    streetAddress: '1001 S Rampart Blvd',
+    sourceUrl: 'https://arcisgolf.com/clubs/angel-park-golf-club/hours-and-directions',
+    streetAddress: '100 S Rampart Blvd',
     city: 'Las Vegas',
     region: 'NV',
     postalCode: '89145',
   },
-  {
-    id: 'cvs-tenaya',
-    name: 'CVS Pharmacy',
-    category: 'pharmacies',
-    schemaType: 'Pharmacy',
-    streetAddress: '7310 N Durango Dr',
-    city: 'Las Vegas',
-    region: 'NV',
-    postalCode: '89149',
-  },
 ];
 
 export function formatPlaceAddress(place: CuratedPlace): string {
-  return `${place.streetAddress}, ${place.city}, ${place.region} ${place.postalCode}`;
+  if (place.streetAddress) {
+    return `${place.streetAddress}, ${place.city}, ${place.region} ${place.postalCode}`;
+  }
+  return `${place.city}, ${place.region} ${place.postalCode}`;
 }
 
 export function filterCuratedByCategory(category: AmenityCategoryId): CuratedPlace[] {
@@ -197,7 +175,7 @@ export const AMENITY_FAQS: AmenityFaq[] = [
   {
     question: 'What grocery stores are near Tule Springs?',
     answer:
-      "Smith's on West Craig Road and Walmart Supercenter on West Craig Road in North Las Vegas are common grocery runs for Tule Springs and Aliante residents.",
+      "Smith's Food and Drug on West Craig Road (3013 W Craig Rd, North Las Vegas) and Walmart Supercenter on West Craig Road (1807 W Craig Rd) are common grocery runs for Tule Springs and Aliante residents.",
   },
   {
     question: 'How far is Tule Springs from the Las Vegas Strip?',
@@ -212,12 +190,12 @@ export const AMENITY_FAQS: AmenityFaq[] = [
   {
     question: 'What parks and trails are close to Tule Springs?',
     answer:
-      'Aliante Nature Discovery Park sits in the heart of the area, with Craig Ranch Regional Park and Tule Springs Regional Park nearby; Eglington Preserve offers desert open space along the community edge.',
+      'Aliante Nature Discovery Park on Nature Park Drive and Craig Ranch Regional Park on West Craig Road are city parks near the Tule Springs and Aliante area; Tule Springs Fossil Beds National Monument preserves open desert nearby.',
   },
   {
-    question: 'Which schools serve Tule Springs?',
+    question: 'Which CCSD schools are assigned to Tule Springs addresses?',
     answer:
-      'Tule Springs is in the Clark County School District; nearby CCSD schools include Lowman Elementary, Centennial High School, and Legacy High School—verify current zoning with CCSD before you buy.',
+      'School assignments follow your street address in the Clark County School District. Use the CCSD Zoning Search at ccsd.net/zoning before you buy—boundaries change and nearby campuses such as Legacy High and Centennial High are not guaranteed for every Tule Springs parcel.',
   },
   {
     question: 'How far is Harry Reid International Airport from Tule Springs?',

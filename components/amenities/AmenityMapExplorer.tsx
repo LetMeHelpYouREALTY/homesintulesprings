@@ -9,6 +9,8 @@ import {
   TULE_SPRINGS_COMMUNITY,
   type AmenityCategoryId,
 } from '@/lib/community-map';
+import { searchCategory } from '@/lib/amenity-places-search';
+import { loadGoogleMaps, mapsAuthFailed } from '@/lib/google-maps-loader';
 import { CuratedAmenityList } from '@/components/amenities/CuratedAmenityList';
 
 const MAPS_API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY?.trim() ?? '';
@@ -19,7 +21,6 @@ const MAP_HEIGHT_FULL = 520;
 
 type AmenityMapExplorerProps = {
   variant?: 'compact' | 'full';
-  /** When true, category chips wrap in a single row on desktop */
   showAllCategories?: boolean;
 };
 
@@ -28,34 +29,37 @@ type MapMarker = {
   lat: number;
   lng: number;
   address?: string;
-  rating?: number;
+  directionsUrl?: string;
   isCommunity?: boolean;
 };
 
-function loadMapsScript(apiKey: string): Promise<void> {
-  if (typeof window === 'undefined') {
-    return Promise.reject(new Error('no window'));
+function buildInfoWindowContent(place: MapMarker): HTMLElement {
+  const root = document.createElement('div');
+  root.className = 'amenity-info-window';
+
+  const title = document.createElement('strong');
+  title.textContent = place.title;
+  root.appendChild(title);
+
+  if (place.address) {
+    const addressEl = document.createElement('p');
+    addressEl.textContent = place.address;
+    root.appendChild(addressEl);
   }
-  if (window.google?.maps) {
-    return Promise.resolve();
-  }
-  const existing = document.querySelector<HTMLScriptElement>('script[data-amenity-maps]');
-  if (existing) {
-    return new Promise((resolve, reject) => {
-      existing.addEventListener('load', () => resolve());
-      existing.addEventListener('error', () => reject(new Error('Maps script error')));
-    });
-  }
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&libraries=places&loading=async`;
-    script.async = true;
-    script.defer = true;
-    script.dataset.amenityMaps = 'true';
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load Google Maps'));
-    document.head.appendChild(script);
-  });
+
+  const dirUrl =
+    place.directionsUrl ??
+    `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`;
+  const link = document.createElement('a');
+  link.href = dirUrl;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = 'Directions';
+  const linkWrap = document.createElement('p');
+  linkWrap.appendChild(link);
+  root.appendChild(linkWrap);
+
+  return root;
 }
 
 export function AmenityMapExplorer({
@@ -74,10 +78,29 @@ export function AmenityMapExplorer({
   const [category, setCategory] = useState<AmenityCategoryId>(DEFAULT_AMENITY_CATEGORY);
   const [useInteractive, setUseInteractive] = useState(false);
   const [mapReady, setMapReady] = useState(false);
-  const [loadFailed, setLoadFailed] = useState(!MAPS_API_KEY);
+  const [useEmbedFallback, setUseEmbedFallback] = useState(!MAPS_API_KEY || mapsAuthFailed);
+  const [placesLoadFailed, setPlacesLoadFailed] = useState(false);
 
   const center = TULE_SPRINGS_COMMUNITY.center;
   const embedUrl = buildEmbedMapUrl(center.lat, center.lng);
+
+  const enterFallback = useCallback(() => {
+    setUseEmbedFallback(true);
+    setUseInteractive(false);
+    setMapReady(false);
+    if (mapInstanceRef.current) {
+      mapInstanceRef.current = null;
+    }
+    markersRef.current.forEach((m) => m.setMap(null));
+    markersRef.current = [];
+    if (communityMarkerRef.current) {
+      communityMarkerRef.current.setMap(null);
+      communityMarkerRef.current = null;
+    }
+    if (mapContainerRef.current) {
+      mapContainerRef.current.replaceChildren();
+    }
+  }, []);
 
   const clearMarkers = useCallback(() => {
     markersRef.current.forEach((m) => m.setMap(null));
@@ -99,7 +122,13 @@ export function AmenityMapExplorer({
     infoWindowRef.current = iw;
     marker.addListener('click', () => {
       iw.setContent(
-        `<div class="amenity-info-window"><strong>${TULE_SPRINGS_COMMUNITY.name}</strong><p>${TULE_SPRINGS_COMMUNITY.centerLabel}</p></div>`,
+        buildInfoWindowContent({
+          title: TULE_SPRINGS_COMMUNITY.name,
+          lat: center.lat,
+          lng: center.lng,
+          address: TULE_SPRINGS_COMMUNITY.centerLabel,
+          isCommunity: true,
+        }),
       );
       iw.open({ map, anchor: marker });
     });
@@ -119,13 +148,7 @@ export function AmenityMapExplorer({
           zIndex: place.isCommunity ? 1000 : 1,
         });
         marker.addListener('click', () => {
-          const ratingLine =
-            place.rating != null ? `<p>Rating: ${place.rating.toFixed(1)}</p>` : '';
-          const addressLine = place.address ? `<p>${place.address}</p>` : '';
-          const dirUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`;
-          iw.setContent(
-            `<div class="amenity-info-window"><strong>${place.title}</strong>${ratingLine}${addressLine}<p><a href="${dirUrl}" target="_blank" rel="noopener">Directions</a></p></div>`,
-          );
+          iw.setContent(buildInfoWindowContent(place));
           iw.open({ map, anchor: marker });
         });
         markersRef.current.push(marker);
@@ -134,84 +157,48 @@ export function AmenityMapExplorer({
     [clearMarkers],
   );
 
-  const searchCategory = useCallback(
+  const loadPlacesForCategory = useCallback(
     async (map: google.maps.Map, categoryId: AmenityCategoryId) => {
-      const cat = getCategoryById(categoryId);
       showCommunityMarker(map);
-
+      setPlacesLoadFailed(false);
       try {
-        const placesLib = (await google.maps.importLibrary('places')) as google.maps.PlacesLibrary;
-        const { Place } = placesLib;
-
-        if (Place && typeof Place.searchNearby === 'function') {
-          const { places } = await Place.searchNearby({
-            fields: ['displayName', 'location', 'formattedAddress', 'rating'],
-            locationRestriction: {
-              center,
-              radius: TULE_SPRINGS_COMMUNITY.searchRadiusMeters,
-            },
-            includedPrimaryTypes: cat.placeTypes,
-            maxResultCount: 15,
-          });
-
-          const markers = places.flatMap((p) => {
-            const loc = p.location;
-            if (!loc) return [];
-            const row: MapMarker = {
-              title: p.displayName ?? 'Place',
-              lat: loc.lat(),
-              lng: loc.lng(),
-              address: p.formattedAddress ?? undefined,
-              rating: p.rating ?? undefined,
-            };
-            return [row];
-          });
-
-          plotMarkers(map, markers);
-          return;
-        }
-      } catch {
-        // Fall through to legacy nearbySearch
-      }
-
-      try {
-        const service = new google.maps.places.PlacesService(map);
-        const request: google.maps.places.PlaceSearchRequest = {
-          location: center,
-          radius: TULE_SPRINGS_COMMUNITY.searchRadiusMeters,
-          type: cat.placeTypes[0],
-        };
-        service.nearbySearch(request, (results, status) => {
-          if (status !== google.maps.places.PlacesServiceStatus.OK || !results) {
-            return;
-          }
-          const markers = results.flatMap((r) => {
-            const loc = r.geometry?.location;
-            if (!loc) return [];
-            const row: MapMarker = {
-              title: r.name ?? 'Place',
-              lat: loc.lat(),
-              lng: loc.lng(),
-              address: r.vicinity,
-              rating: r.rating,
-            };
-            return [row];
-          });
-          plotMarkers(map, markers);
+        const places = await searchCategory(center, categoryId);
+        const markers = places.flatMap((p) => {
+          const loc = p.location;
+          if (!loc) return [];
+          const json = loc.toJSON?.() ?? { lat: loc.lat(), lng: loc.lng() };
+          const row: MapMarker = {
+            title: p.displayName ?? 'Place',
+            lat: json.lat,
+            lng: json.lng,
+            address: p.formattedAddress ?? undefined,
+            directionsUrl: p.googleMapsURI ?? undefined,
+          };
+          return [row];
         });
+        plotMarkers(map, markers);
       } catch {
-        setLoadFailed(true);
+        setPlacesLoadFailed(true);
+        plotMarkers(map, [
+          {
+            title: TULE_SPRINGS_COMMUNITY.name,
+            lat: center.lat,
+            lng: center.lng,
+            address: TULE_SPRINGS_COMMUNITY.centerLabel,
+            isCommunity: true,
+          },
+        ]);
       }
     },
     [center, plotMarkers, showCommunityMarker],
   );
 
   const initMap = useCallback(async () => {
-    if (!MAPS_API_KEY || !mapContainerRef.current || mapInstanceRef.current) {
+    if (useEmbedFallback || !MAPS_API_KEY || !mapContainerRef.current || mapInstanceRef.current) {
       return;
     }
     try {
-      await loadMapsScript(MAPS_API_KEY);
+      await loadGoogleMaps(MAPS_API_KEY);
       const mapOptions: google.maps.MapOptions = {
         center,
         zoom: 13,
@@ -225,15 +212,29 @@ export function AmenityMapExplorer({
       const map = new google.maps.Map(mapContainerRef.current, mapOptions);
       mapInstanceRef.current = map;
       setMapReady(true);
-      await searchCategory(map, category);
+      await loadPlacesForCategory(map, category);
     } catch {
-      setLoadFailed(true);
-      setUseInteractive(false);
+      enterFallback();
     }
-  }, [category, center, searchCategory]);
+  }, [category, center, enterFallback, loadPlacesForCategory, useEmbedFallback]);
 
   useEffect(() => {
-    if (!MAPS_API_KEY || loadFailed) {
+    if (useEmbedFallback) {
+      return;
+    }
+    const onAuthFailure = () => enterFallback();
+    window.addEventListener('gmaps:auth-failure', onAuthFailure);
+    return () => window.removeEventListener('gmaps:auth-failure', onAuthFailure);
+  }, [enterFallback, useEmbedFallback]);
+
+  useEffect(() => {
+    if (mapsAuthFailed) {
+      enterFallback();
+    }
+  }, [enterFallback]);
+
+  useEffect(() => {
+    if (!MAPS_API_KEY || useEmbedFallback) {
       return;
     }
     const node = panelRef.current;
@@ -243,7 +244,7 @@ export function AmenityMapExplorer({
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.some((e) => e.isIntersecting);
-        if (visible && !useInteractive && !loadFailed) {
+        if (visible && !useInteractive) {
           setUseInteractive(true);
         }
       },
@@ -251,28 +252,28 @@ export function AmenityMapExplorer({
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [loadFailed, useInteractive]);
+  }, [useEmbedFallback, useInteractive]);
 
   useEffect(() => {
-    if (!useInteractive || loadFailed) {
+    if (!useInteractive || useEmbedFallback) {
       return;
     }
     void initMap();
-  }, [useInteractive, loadFailed, initMap]);
+  }, [useInteractive, useEmbedFallback, initMap]);
 
   useEffect(() => {
     const map = mapInstanceRef.current;
-    if (!map || !mapReady) {
+    if (!map || !mapReady || useEmbedFallback) {
       return;
     }
-    void searchCategory(map, category);
-  }, [category, mapReady, searchCategory]);
+    void loadPlacesForCategory(map, category);
+  }, [category, loadPlacesForCategory, mapReady, useEmbedFallback]);
 
   const categoriesToShow = showAllCategories
     ? AMENITY_CATEGORIES
     : AMENITY_CATEGORIES.slice(0, 6);
 
-  const showIframe = !MAPS_API_KEY || loadFailed || !mapReady;
+  const showEmbed = useEmbedFallback || !mapReady;
 
   return (
     <div className="amenity-map-explorer">
@@ -308,27 +309,28 @@ export function AmenityMapExplorer({
         className="amenity-map-panel"
         style={{ minHeight: mapHeight }}
       >
-        {showIframe ? (
-          <div className="open-houses-map-frame amenity-map-frame">
-            <iframe
-              src={embedUrl}
-              title={`Map of ${TULE_SPRINGS_COMMUNITY.name}, ${TULE_SPRINGS_COMMUNITY.city}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              width="100%"
-              height={mapHeight}
-              style={{ border: 0 }}
-              allowFullScreen
-            />
-          </div>
-        ) : null}
+        <div
+          className="open-houses-map-frame amenity-map-frame"
+          style={{ display: showEmbed ? 'block' : 'none' }}
+        >
+          <iframe
+            src={embedUrl}
+            title={`Map of ${TULE_SPRINGS_COMMUNITY.name}, ${TULE_SPRINGS_COMMUNITY.city}`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            width="100%"
+            height={mapHeight}
+            style={{ border: 0 }}
+            allowFullScreen
+          />
+        </div>
         <div
           ref={mapContainerRef}
           className="amenity-map-canvas"
           style={{
             height: mapHeight,
             width: '100%',
-            display: showIframe ? 'none' : 'block',
+            display: showEmbed ? 'none' : 'block',
           }}
           aria-label={`Interactive map of ${getCategoryById(category).label} near ${TULE_SPRINGS_COMMUNITY.name}`}
         />
@@ -337,6 +339,7 @@ export function AmenityMapExplorer({
       <div className="curated-amenity-section">
         <h3 className="curated-amenity-heading">
           Featured {getCategoryById(category).label.toLowerCase()} near {TULE_SPRINGS_COMMUNITY.name}
+          {placesLoadFailed ? ' (verified list)' : ''}
         </h3>
         <CuratedAmenityList
           category={category}
