@@ -4,6 +4,7 @@ import { BreadcrumbJsonLd } from '@/components/seo/BreadcrumbJsonLd';
 import { routeMetadata } from '@/lib/page-seo';
 import { BUSINESS } from '@/lib/site-contact';
 import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
+import { NearbyAmenitiesSection } from '@/components/amenities/NearbyAmenitiesSection';
 
 export const metadata = routeMetadata('/north-las-vegas-tule-springs');
 
@@ -25,6 +26,7 @@ export default function NorthLasVegasTuleSpringsPage() {
           </div>
         </div>
       </section>
+      <NearbyAmenitiesSection />
       <section className="cta-section">
         <div className="container">
           <div className="cta-content text-center">
