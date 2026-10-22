@@ -4,7 +4,7 @@ import { createPageMetadata } from '@/lib/seo';
 
 /** All marketed routes with SEO copy in one place (title + meta description). */
 const SEO_BY_PATH: Record<
-  '/' | '/buyers' | '/sellers' | '/listings' | '/about' | '/contact' | '/tule-springs' | '/tule-springs-homes-for-sale' | '/tule-springs-villages' | '/tule-springs-schools' | '/tule-springs-amenities' | '/why-tule-springs' | '/tule-springs-real-estate' | '/tule-springs-neighborhoods' | '/north-las-vegas-tule-springs' | '/tule-springs-new-homes',
+  '/' | '/buyers' | '/sellers' | '/listings' | '/about' | '/contact' | '/tule-springs' | '/tule-springs-homes-for-sale' | '/tule-springs-villages' | '/tule-springs-schools' | '/tule-springs-amenities' | '/amenities' | '/why-tule-springs' | '/tule-springs-real-estate' | '/tule-springs-neighborhoods' | '/north-las-vegas-tule-springs' | '/tule-springs-new-homes',
   { title: string; description: string }
 > = {
   '/': {
@@ -61,6 +61,11 @@ const SEO_BY_PATH: Record<
     title: 'Tule Springs Amenities | Parks, Trails & Lifestyle',
     description:
       'Discover Tule Springs amenities, parks, trails, and recreation, then search nearby homes with Dr. Jan Duffy.',
+  },
+  '/amenities': {
+    title: 'Nearby Amenities in Tule Springs | North Las Vegas Map & Guide',
+    description:
+      'Interactive map of restaurants, parks, grocery, healthcare, and schools near Tule Springs and Aliante in North Las Vegas, Nevada. Local guide from Dr. Jan Duffy.',
   },
   '/why-tule-springs': {
     title: 'Why Live in Tule Springs | North Las Vegas Community',

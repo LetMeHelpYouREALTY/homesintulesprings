@@ -43,6 +43,7 @@ export function Footer() {
               <li><Link href="/tule-springs-villages">Villages</Link></li>
               <li><Link href="/tule-springs-schools">Schools</Link></li>
               <li><Link href="/tule-springs-amenities">Amenities</Link></li>
+              <li><Link href="/amenities">Nearby Amenities Map</Link></li>
               <li><Link href="/tule-springs-neighborhoods">Neighborhoods</Link></li>
               <li><Link href="/north-las-vegas-tule-springs">North Las Vegas</Link></li>
               <li><Link href="/tule-springs-new-homes">New Homes</Link></li>

@@ -31,6 +31,7 @@ const nextConfig: NextConfig = {
       { source: '/tule-springs-neighborhoods.html', destination: '/tule-springs-neighborhoods', permanent: true },
       { source: '/north-las-vegas-tule-springs.html', destination: '/north-las-vegas-tule-springs', permanent: true },
       { source: '/tule-springs-new-homes.html', destination: '/tule-springs-new-homes', permanent: true },
+      { source: '/nearby-amenities', destination: '/amenities', permanent: true },
     ];
   },
   async headers() {
@@ -46,7 +47,7 @@ const nextConfig: NextConfig = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self' https://calendly.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://em.realscout.com https://www.realscout.com https://cdn.jsdelivr.net https://assets.calendly.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://assets.calendly.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://em.realscout.com https://www.realscout.com https://vitals.vercel-insights.com https://calendly.com https://api.calendly.com; frame-src 'self' https://www.google.com https://calendly.com;",
+              "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self' https://calendly.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://maps.googleapis.com https://em.realscout.com https://www.realscout.com https://cdn.jsdelivr.net https://assets.calendly.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com https://assets.calendly.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://maps.googleapis.com https://places.googleapis.com https://em.realscout.com https://www.realscout.com https://vitals.vercel-insights.com https://calendly.com https://api.calendly.com; frame-src 'self' https://www.google.com https://calendly.com;",
           },
         ],
       },

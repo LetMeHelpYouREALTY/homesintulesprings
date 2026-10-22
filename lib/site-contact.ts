@@ -54,6 +54,7 @@ export const NAV_ROUTES = [
   '/tule-springs-villages',
   '/tule-springs-schools',
   '/tule-springs-amenities',
+  '/amenities',
   '/why-tule-springs',
   '/tule-springs-real-estate',
   '/tule-springs-neighborhoods',
