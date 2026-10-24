@@ -33,20 +33,19 @@ export default function AboutPage() {
               <img src="/images/agents/zillowDr Jan new.jpg" alt="Dr. Jan Duffy, REALTOR® professional headshot" className="agent-photo" style={{ width: '300px', height: '300px' }} />
               <div className="agent-stats" style={{ justifyContent: 'center', marginTop: '30px' }}>
                 <div className="agent-stat"><strong>Local</strong><span>Tule Springs Focus</span></div>
-                <div className="agent-stat"><strong>17+</strong><span>Years</span></div>
+                <div className="agent-stat"><strong>Since 1983</strong><span>In real estate</span></div>
                 <div className="agent-stat"><strong>Trusted</strong><span>Guidance</span></div>
               </div>
             </div>
             <div className="col-lg-7">
               <h2>Meet Dr. Jan Duffy</h2>
-              <p className="agent-title">REALTOR® | Berkshire Hathaway HomeServices Nevada Properties</p>
-              <p>With years of experience in the Las Vegas Valley market, Dr. Jan Duffy serves buyers and sellers in Tule Springs and North Las Vegas, Nevada with local insight and hands-on guidance.</p>
+              <p className="agent-title">Top 1% Las Vegas REALTOR®</p>
+              <p>In real estate since 1983, Dr. Jan Duffy serves buyers and sellers in Tule Springs and North Las Vegas, Nevada with local insight and hands-on guidance.</p>
               <p>As a resident of the Tule Springs area, Dr. Duffy offers unparalleled insider knowledge of the community&apos;s <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, <Link href="/tule-springs-amenities">amenities</Link>, and lifestyle. Her clients benefit from her deep understanding of local market trends, neighborhood developments, and property values.</p>
-              <p>Backed by the trusted Berkshire Hathaway HomeServices brand and a global network of 50,000+ agents, Dr. Duffy provides world-class marketing, expert negotiation, and personalized service tailored to each client&apos;s unique needs.</p>
+              <p>Dr. Duffy provides world-class marketing, expert negotiation, and personalized service tailored to each client&apos;s unique needs.</p>
               <h3 style={{ marginTop: '30px' }}>Credentials & Affiliations</h3>
               <ul className="feature-list-inline">
-                <li><i className="fas fa-check-circle"></i> Nevada Real Estate License S.0197614.LLC</li>
-                <li><i className="fas fa-check-circle"></i> Berkshire Hathaway HomeServices Nevada Properties</li>
+                
                 <li><i className="fas fa-check-circle"></i> Greater Las Vegas Association of REALTORS®</li>
                 <li><i className="fas fa-check-circle"></i> National Association of REALTORS®</li>
               </ul>
@@ -79,8 +78,8 @@ export default function AboutPage() {
             <div className="col-md-4">
               <div className="feature-box">
                 <div className="feature-icon"><i className="fas fa-shield-alt"></i></div>
-                <h3>BHHS Backing</h3>
-                <p>The trust and resources of Berkshire Hathaway HomeServices behind every transaction.</p>
+                                <h3>Proven Experience</h3>
+                <p>In real estate since 1983, with full support behind every transaction.</p>
               </div>
             </div>
           </div>

@@ -10,7 +10,7 @@ const SEO_BY_PATH: Record<
   '/': {
     title: 'Homes in Tule Springs | North Las Vegas Real Estate | Dr. Jan Duffy',
     description:
-      'Search Tule Springs and North Las Vegas homes for sale, explore the community, and connect with Dr. Jan Duffy, REALTOR® with Berkshire Hathaway HomeServices Nevada Properties.',
+      'Search Tule Springs and North Las Vegas homes for sale, explore the community, and connect with Dr. Jan Duffy, REALTOR®.',
   },
   '/buyers': {
     title: 'Buy a Home in Tule Springs | Buyer Services',
@@ -30,7 +30,7 @@ const SEO_BY_PATH: Record<
   '/about': {
     title: 'About Dr. Jan Duffy | Tule Springs REALTOR®',
     description:
-      'Meet Dr. Jan Duffy, REALTOR® serving Tule Springs and North Las Vegas, Nevada with Berkshire Hathaway HomeServices Nevada Properties.',
+      'Meet Dr. Jan Duffy, REALTOR® serving Tule Springs and North Las Vegas, Nevada, in real estate since 1983.',
   },
   '/contact': {
     title: 'Contact Dr. Jan Duffy | Tule Springs Real Estate',

@@ -167,7 +167,7 @@ export default function HomePage() {
             <div className="col-md-4 text-center">
               <Image
                 src="/images/agents/design 04_new 2.jpg"
-                alt="Dr. Jan Duffy, REALTOR® — Berkshire Hathaway HomeServices Nevada Properties"
+                alt="Dr. Jan Duffy, REALTOR®"
                 width={360}
                 height={360}
                 className="agent-photo"
@@ -178,15 +178,15 @@ export default function HomePage() {
             <div className="col-md-8">
               <h2>Dr. Jan Duffy</h2>
               <p className="agent-title">Your Tule Springs Real Estate Expert</p>
-              <p>Serving Tule Springs and North Las Vegas, Nevada since 2008. Whether you&apos;re buying your first home or selling to move up, I provide personalized service backed by Berkshire Hathaway HomeServices.</p>
+              <p>In real estate since 1983, I serve Tule Springs and North Las Vegas, Nevada. Whether you&apos;re buying your first home or selling to move up, I provide personalized service.</p>
               <div className="agent-stats">
                 <div className="agent-stat">
                   <strong>Local</strong>
                   <span>Tule Springs Focus</span>
                 </div>
                 <div className="agent-stat">
-                  <strong>17+</strong>
-                  <span>Years Experience</span>
+                  <strong>Since 1983</strong>
+                  <span>In Real Estate</span>
                 </div>
                 <div className="agent-stat">
                   <strong>Client-First</strong>

@@ -10,7 +10,7 @@ export function Footer() {
             <div className="footer-logo">
               <img
                 src="/images/logo-white.svg"
-                alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices"
+                alt="Dr. Jan Duffy, REALTOR®"
                 className="img-fluid"
                 loading="lazy"
                 width={220}
@@ -80,7 +80,7 @@ export function Footer() {
             </div>
             <div className="col-md-6">
               <div className="footer-legal">
-                <p>Dr. Jan Duffy | License {BUSINESS.license} | {BUSINESS.legalName}</p>
+                <p>{BUSINESS.legalName} since September 2008 · License {BUSINESS.license}</p>
                 <div className="realtor-logos">
                   <span className="equal-housing">
                     <img src="/images/equal-housing.svg" alt="Equal Housing Opportunity" loading="lazy" width={60} height={30} />

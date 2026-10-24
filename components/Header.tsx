@@ -11,7 +11,7 @@ export function Header() {
               <Link href="/">
                 <img
                   src="/images/logo.svg"
-                  alt="Dr. Jan Duffy - Berkshire Hathaway HomeServices"
+                  alt="Dr. Jan Duffy, REALTOR®"
                   className="img-fluid"
                   width={260}
                   height={64}
