@@ -30,7 +30,7 @@ const SEO_BY_PATH: Record<
   '/about': {
     title: 'About Dr. Jan Duffy | Tule Springs REALTOR®',
     description:
-      'Meet Dr. Jan Duffy, REALTOR® serving Tule Springs and North Las Vegas, Nevada, in real estate since 1983.',
+      'Meet Dr. Jan Duffy, REALTOR® serving Tule Springs and North Las Vegas, Nevada, licensed since 2008 · 35 years in Las Vegas.',
   },
   '/contact': {
     title: 'Contact Dr. Jan Duffy | Tule Springs Real Estate',
