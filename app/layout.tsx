@@ -11,6 +11,7 @@ import { CalendlyAssetsLoader } from '@/components/CalendlyAssetsLoader';
 import { CalendlyScheduleSection } from '@/components/CalendlyScheduleSection';
 import { RealScoutScriptLoader } from '@/components/RealScoutScriptLoader';
 import { getBaseMetadata, getOrgGraph } from '@/lib/seo';
+import WidgetTracker from './widget-tracker'
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -83,6 +84,7 @@ export default function RootLayout({
         <SpeedInsights />
         <Analytics />
         <CloudflareAnalytics />
+        <WidgetTracker />
       </body>
     </html>
   );
