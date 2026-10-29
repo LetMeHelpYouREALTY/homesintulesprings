@@ -33,14 +33,14 @@ export default function AboutPage() {
               <img src="/images/agents/zillowDr Jan new.jpg" alt="Dr. Jan Duffy, REALTOR® professional headshot" className="agent-photo" style={{ width: '300px', height: '300px' }} />
               <div className="agent-stats" style={{ justifyContent: 'center', marginTop: '30px' }}>
                 <div className="agent-stat"><strong>Local</strong><span>Tule Springs Focus</span></div>
-                <div className="agent-stat"><strong>Since 1983</strong><span>In real estate</span></div>
+                <div className="agent-stat"><strong>Since 2008</strong><span>Licensed</span></div>
                 <div className="agent-stat"><strong>Trusted</strong><span>Guidance</span></div>
               </div>
             </div>
             <div className="col-lg-7">
               <h2>Meet Dr. Jan Duffy</h2>
-              <p className="agent-title">Top 1% Las Vegas REALTOR®</p>
-              <p>In real estate since 1983, Dr. Jan Duffy serves buyers and sellers in Tule Springs and North Las Vegas, Nevada with local insight and hands-on guidance.</p>
+              <p className="agent-title">Las Vegas REALTOR®</p>
+              <p>Licensed since 2008 · 35 years in Las Vegas, Dr. Jan Duffy serves buyers and sellers in Tule Springs and North Las Vegas, Nevada with local insight and hands-on guidance.</p>
               <p>As a resident of the Tule Springs area, Dr. Duffy offers unparalleled insider knowledge of the community&apos;s <Link href="/tule-springs-villages">villages</Link>, <Link href="/tule-springs-schools">schools</Link>, <Link href="/tule-springs-amenities">amenities</Link>, and lifestyle. Her clients benefit from her deep understanding of local market trends, neighborhood developments, and property values.</p>
               <p>Dr. Duffy provides world-class marketing, expert negotiation, and personalized service tailored to each client&apos;s unique needs.</p>
               <h3 style={{ marginTop: '30px' }}>Credentials & Affiliations</h3>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <div className="feature-box">
                 <div className="feature-icon"><i className="fas fa-shield-alt"></i></div>
                                 <h3>Proven Experience</h3>
-                <p>In real estate since 1983, with full support behind every transaction.</p>
+                <p>Licensed since 2008 · 35 years in Las Vegas, with full support behind every transaction.</p>
               </div>
             </div>
           </div>
