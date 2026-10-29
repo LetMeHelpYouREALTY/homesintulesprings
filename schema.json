@@ -113,7 +113,7 @@
       "@type": "Place",
       "@id": "https://www.homesintulesprings.com/tule-springs/#place",
       "name": "Tule Springs",
-      "description": "Tule Springs is a premier master-planned community in North Las Vegas featuring multiple villages, 30+ acres of parks, walking trails, and award-winning schools.",
+      "description": "Tule Springs is a premier master-planned community in North Las Vegas featuring multiple villages, 30+ acres of parks, walking trails, and nearby public schools.",
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": 36.3031,
@@ -140,7 +140,7 @@
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "Award-Winning Schools",
+          "name": "Nearby Public Schools",
           "value": true
         }
       ]
@@ -209,7 +209,7 @@
           "name": "What makes Tule Springs different from other communities?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Tule Springs offers a unique combination of modern amenities, natural beauty, and convenient location. With over 30 acres of parks, walking trails, award-winning schools, and proximity to the Las Vegas Strip (15 minutes), it's one of North Las Vegas' most desirable communities."
+            "text": "Tule Springs offers a unique combination of modern amenities, natural beauty, and convenient location. With over 30 acres of parks, walking trails, nearby public schools, and proximity to the Las Vegas Strip (15 minutes), it's one of North Las Vegas' most desirable communities."
           }
         },
         {
