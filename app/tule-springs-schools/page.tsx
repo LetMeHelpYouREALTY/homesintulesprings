@@ -17,7 +17,7 @@ export default function TuleSpringsSchoolsPage() {
           <div className="section-header">
             <span className="section-badge">Homes for Sale</span>
             <h2>Homes Near Tule Springs Schools</h2>
-            <p>Find homes in top school zones serving Tule Springs and North Las Vegas families.</p>
+            <p>Find homes in school zones serving Tule Springs and North Las Vegas families.</p>
           </div>
           <div className="realscout-widget-container realscout-main">
             {/* @ts-expect-error RealScout custom element */}
@@ -28,7 +28,7 @@ export default function TuleSpringsSchoolsPage() {
       <section className="cta-section">
         <div className="container">
           <div className="cta-content text-center">
-            <h2>Find a Home Near Great Schools</h2>
+            <h2>Find a Home Near Nearby public schools</h2>
             <p>Dr. Jan Duffy can help you find homes in your preferred school zone in Tule Springs and North Las Vegas, Nevada.</p>
             <div className="cta-buttons">
               <a href={`tel:${BUSINESS.phoneE164}`} className="btn btn-primary btn-lg"><i className="fas fa-phone"></i> Call {BUSINESS.phoneDisplay}</a>
