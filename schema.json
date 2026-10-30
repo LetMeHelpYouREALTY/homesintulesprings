@@ -61,13 +61,6 @@
         "url": "https://www.bhhsnv.com"
       },
       "priceRange": "$$-$$$",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "500",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
       "makesOffer": {
         "@type": "Offer",
         "itemOffered": {
@@ -297,13 +290,6 @@
         "@type": "City",
         "name": "North Las Vegas",
         "containsPlace": "Tule Springs"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "500",
-        "bestRating": "5",
-        "worstRating": "1"
       },
       "review": [
         {
