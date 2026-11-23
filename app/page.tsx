@@ -1,11 +1,49 @@
 import Image from 'next/image';
 import { CalendlyScheduleButton } from '@/components/CalendlyScheduleButton';
+import { FaqAccordion } from '@/components/FaqAccordion';
 import { OpenHousesMapSection } from '@/components/OpenHousesMapSection';
-import { BUSINESS } from '@/lib/site-contact';
+import { BUSINESS, SITE_URL } from '@/lib/site-contact';
 import { REALSCOUT_LISTING_PROPS } from '@/lib/realscout';
 import { routeMetadata } from '@/lib/page-seo';
 
 export const metadata = routeMetadata('');
+
+const HOME_AREA_FAQ = [
+  {
+    question: 'What is Tule Springs Fossil Beds National Monument?',
+    answer:
+      'Tule Springs Fossil Beds National Monument protects about 22,650 acres and was established on December 19, 2014. The monument has no street address; the South Unit is reached from Aliante Parkway and Moonlight Falls Avenue in North Las Vegas (National Park Service basic info, checked 2026-11-23).',
+  },
+  {
+    question: 'Where is Floyd Lamb Park at Tule Springs?',
+    answer:
+      'Floyd Lamb Park at Tule Springs is a 680-acre City of Las Vegas park at 9200 Tule Springs Road, Las Vegas, NV 89131. It is not in the City of North Las Vegas and is not part of The Villages at Tule Springs master plan (City of Las Vegas parks page, checked 2026-11-23).',
+  },
+  {
+    question: 'Where is The Villages at Tule Springs?',
+    answer:
+      'The Villages at Tule Springs is a master-planned community in the City of North Las Vegas along the 215 Beltway. Listings in the MLS for this area commonly carry ZIP codes 89084 and 89086 (Nevada Real Estate Group MLS analysis, 2026-11-01).',
+  },
+  {
+    question: 'How can I search homes for sale in the Tule Springs area?',
+    answer:
+      'Use the home search on this site to browse current listings, or call Dr. Jan Duffy at (702) 500-1942 for guidance on homes in Tule Springs and North Las Vegas. She can help you schedule showings and walk through offers and closing steps.',
+  },
+] as const;
+
+const homeAreaFaqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${SITE_URL}/#home-area-faq`,
+  mainEntity: HOME_AREA_FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
 
 export default function HomePage() {
   return (
@@ -36,6 +74,52 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="market-snapshot" aria-labelledby="tule-glance-heading">
+        <div className="container">
+          <div className="section-header">
+            <h2 id="tule-glance-heading">Tule Springs at a glance</h2>
+            <p>Area landmarks and the master plan that frames home search in North Las Vegas.</p>
+          </div>
+          <ul className="text-start" style={{ maxWidth: '720px', margin: '0 auto' }}>
+            <li>
+              <strong>Tule Springs Fossil Beds National Monument</strong> (National Park Service, checked 2026-11-23):
+              about 22,650 acres, established December 19, 2014; no street address; South Unit access at Aliante Parkway
+              and Moonlight Falls Avenue, North Las Vegas.
+            </li>
+            <li>
+              <strong>Floyd Lamb Park at Tule Springs</strong> (City of Las Vegas parks, checked 2026-11-23): 680 acres at
+              9200 Tule Springs Road, Las Vegas, NV 89131 — a City of Las Vegas park, not North Las Vegas, and not part of
+              The Villages at Tule Springs.
+            </li>
+            <li>
+              <strong>The Villages at Tule Springs</strong> (Nevada Real Estate Group MLS analysis, 2026-11-01): a master
+              plan in the City of North Las Vegas along the 215 Beltway; MLS filings for the area commonly use ZIP codes
+              89084 and 89086.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="faq-section" aria-labelledby="home-area-faq-heading">
+        <div className="container">
+          <div className="section-title">
+            <h2 id="home-area-faq-heading">Tule Springs area questions</h2>
+            <p>Quick answers about parks, the monument, and home search with Dr. Jan Duffy</p>
+          </div>
+          <FaqAccordion
+            aria-labelledby="home-area-faq-heading"
+            items={HOME_AREA_FAQ.map((item) => ({
+              question: item.question,
+              answer: <p>{item.answer}</p>,
+            }))}
+          />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(homeAreaFaqJsonLd).replace(/</g, '\\u003c') }}
+          />
         </div>
       </section>
 

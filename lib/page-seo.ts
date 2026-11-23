@@ -8,7 +8,7 @@ const SEO_BY_PATH: Record<
   { title: string; description: string }
 > = {
   '/': {
-    title: 'Homes in Tule Springs | North Las Vegas Real Estate | Dr. Jan Duffy',
+    title: 'Tule Springs Homes | North Las Vegas | Dr. Jan Duffy',
     description:
       'Search Tule Springs and North Las Vegas homes for sale, explore the community, and connect with Dr. Jan Duffy, REALTOR®.',
   },
