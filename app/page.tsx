@@ -12,22 +12,27 @@ const HOME_AREA_FAQ = [
   {
     question: 'What is Tule Springs Fossil Beds National Monument?',
     answer:
-      'Tule Springs Fossil Beds National Monument protects about 22,650 acres and was established on December 19, 2014. The monument has no street address; the South Unit is reached from Aliante Parkway and Moonlight Falls Avenue in North Las Vegas (National Park Service basic info, checked 2026-11-23).',
+      'Tule Springs Fossil Beds National Monument protects about 22,650 acres and was established on December 19, 2014. The monument has no street address. The South Unit is accessed at Aliante Parkway and Moonlight Falls Avenue in North Las Vegas.',
   },
   {
     question: 'Where is Floyd Lamb Park at Tule Springs?',
     answer:
-      'Floyd Lamb Park at Tule Springs is a 680-acre City of Las Vegas park at 9200 Tule Springs Road, Las Vegas, NV 89131. It is not in the City of North Las Vegas and is not part of The Villages at Tule Springs master plan (City of Las Vegas parks page, checked 2026-11-23).',
+      'Floyd Lamb Park at Tule Springs is a 680-acre City of Las Vegas park at 9200 Tule Springs Road, Las Vegas, NV 89131. It is not in the City of North Las Vegas and is not part of The Villages at Tule Springs master plan.',
   },
   {
     question: 'Where is The Villages at Tule Springs?',
     answer:
-      'The Villages at Tule Springs is a master-planned community in the City of North Las Vegas along the 215 Beltway. Listings in the MLS for this area commonly carry ZIP codes 89084 and 89086 (Nevada Real Estate Group MLS analysis, 2026-11-01).',
+      'The Villages at Tule Springs is a master plan in the City of North Las Vegas along the 215 Beltway. Home listings for this area are often filed in ZIP codes 89084 and 89086.',
   },
   {
-    question: 'How can I search homes for sale in the Tule Springs area?',
+    question: 'Is Floyd Lamb Park at Tule Springs in North Las Vegas?',
     answer:
-      'Use the home search on this site to browse current listings, or call Dr. Jan Duffy at (702) 500-1942 for guidance on homes in Tule Springs and North Las Vegas. She can help you schedule showings and walk through offers and closing steps.',
+      'No. Floyd Lamb Park at Tule Springs is operated by the City of Las Vegas at 9200 Tule Springs Road, Las Vegas, NV 89131, separate from the City of North Las Vegas and from The Villages at Tule Springs.',
+  },
+  {
+    question: 'How do visitors reach Tule Springs Fossil Beds National Monument?',
+    answer:
+      'Because the monument has no street address, visitors use cross-street directions. The South Unit is at Aliante Parkway and Moonlight Falls Avenue in North Las Vegas.',
   },
 ] as const;
 
@@ -85,19 +90,16 @@ export default function HomePage() {
           </div>
           <ul className="text-start" style={{ maxWidth: '720px', margin: '0 auto' }}>
             <li>
-              <strong>Tule Springs Fossil Beds National Monument</strong> (National Park Service, checked 2026-11-23):
-              about 22,650 acres, established December 19, 2014; no street address; South Unit access at Aliante Parkway
-              and Moonlight Falls Avenue, North Las Vegas.
+              <strong>Tule Springs Fossil Beds National Monument:</strong> about 22,650 acres, established December 19,
+              2014; no street address; South Unit access at Aliante Parkway and Moonlight Falls Avenue, North Las Vegas.
             </li>
             <li>
-              <strong>Floyd Lamb Park at Tule Springs</strong> (City of Las Vegas parks, checked 2026-11-23): 680 acres at
-              9200 Tule Springs Road, Las Vegas, NV 89131 — a City of Las Vegas park, not North Las Vegas, and not part of
-              The Villages at Tule Springs.
+              <strong>Floyd Lamb Park at Tule Springs:</strong> 680 acres at 9200 Tule Springs Road, Las Vegas, NV 89131 — a
+              City of Las Vegas park, not North Las Vegas, and not part of The Villages at Tule Springs.
             </li>
             <li>
-              <strong>The Villages at Tule Springs</strong> (Nevada Real Estate Group MLS analysis, 2026-11-01): a master
-              plan in the City of North Las Vegas along the 215 Beltway; MLS filings for the area commonly use ZIP codes
-              89084 and 89086.
+              <strong>The Villages at Tule Springs:</strong> a master plan in the City of North Las Vegas along the 215
+              Beltway; home listings for the area are often filed in ZIP codes 89084 and 89086.
             </li>
           </ul>
         </div>
